@@ -1,0 +1,78 @@
+Dominio:
+Gateway Selection
+
+Subdominio:
+Generador de tráfico
+
+Tecnologías:
+R, SparkML para el modelo
+Spark para gestionar todos los clientes
+Kafka
+Docker para todos los módulos
+
+############# MODELO 
+--> Generación de patrones <--
+Variables:
+
+	- Location (IP)
+	- Time_Start_Conn
+	- Time_End_Conn
+	- Service
+	- Device_type
+	- Is_Robot
+	- User_profile
+	- Num_packets
+	- Is_employee
+	- Married
+	- Age	
+
+1. DataSet Estático
+2. SparkML para patrones de generación de tráfico
+
+
+-Series temporales (cómo un usuario cambia a lo largo del tiempo)
+-Python y SparkML y ver comparativa
+
+############## Generación y etiquetado de tráfico
+--> Generación de tráfico en base a modelos y análisis del mismo para etiquetado de paquetes generados <--
+
+1. Llega nuevo usuario
+2. Se le asigna patrón
+3. Se genera tráfico
+4. Se analiza y etiqueta el tráfico
+5. En base al histórico (uso de un usuario) se pueden ponderar los servicios a ejecutar.
+
+-Usar la generacion del trafico actual para mejorar el modelo al que se le ha asignado el nuevo usuario, (mejora del patron)
+DPISim/Snort
+
+----> Clasificación tráfico:
+
+Esquema:
+		------> HTTP       |       |     |      |
+                                   |       |     |      |
+                                   |       |     |      |      -------------------------------------------------------------
+                                   |TCPDUMP|     |SPARK |        {servicio, ip, numero de paquete}                 KAFKA
+Cliente         ------> Video      |       |     |      |      -------------------------------------------------------------
+                                   |       |     |      |
+                                   |       |     |      |
+                                   |       |     |      |
+		------> VoIP       |       |     |      |
+
+
+	- Diferenciación de los paquetes por servicio. Etiqueto el tráfico según lo que se esté generando.
+
+
+VOIP
+18 Bytes Ethernet + 40 Bytes IP Protocol + 160 Bytes Payload (64kbps codec* 0.02s packet voice) = 218Bytes  (sin comprimir)
+
+http://www.tutorialspoint.com/unix_commands/ping.htm
+http://www.techexams.net/forums/ccnp/48768-voip-packet-size.html
+
+http://speedtestatl.cbeyond.net/index.html
+http://voiptest.8x8.com/voip.php?voiplines=40&testlength=30&codec=g729
+
+
+
+
+
+

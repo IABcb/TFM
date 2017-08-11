@@ -1,0 +1,20 @@
+--2017-08-07 22:56:05--  http://www.as.com/
+Resolving www.as.com (www.as.com)... 2.16.8.82, 2.16.8.43
+Connecting to www.as.com (www.as.com)|2.16.8.82|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: http://as.com/ [following]
+--2017-08-07 22:56:05--  http://as.com/
+Resolving as.com (as.com)... 2.16.8.82, 2.16.8.43
+Reusing existing connection to www.as.com:80.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://as.com/ [following]
+--2017-08-07 22:56:05--  https://as.com/
+Connecting to as.com (as.com)|2.16.8.82|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘.Garbage/index.html.2’
+
+index.html.2                           [ <=>                                                          ] 651,32K  2,59MB/s               index.html.2                           [  <=>                                                         ] 652,49K  2,60MB/s    in 0,2s    
+
+2017-08-07 22:56:06 (2,60 MB/s) - ‘.Garbage/index.html.2’ saved [668154]
+

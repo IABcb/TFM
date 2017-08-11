@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://spark.apache.org/mllib/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+     MLlib | Apache Spark
+    
+  </title>
+
+  
+
+  
+    <meta name="description" content="MLlib is Apache Spark&#39;s scalable machine learning library, with APIs in Java, Scala, Python, and R.">
+  
+
+  <!-- Bootstrap core CSS -->
+  <link href="./MLlib _ Apache Spark_files/cerulean.min.css" rel="stylesheet">
+  <link href="./MLlib _ Apache Spark_files/custom.css" rel="stylesheet">
+
+  <!-- Code highlighter CSS -->
+  <link href="./MLlib _ Apache Spark_files/pygments-default.css" rel="stylesheet">
+
+  <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript">
+  <!-- Google Analytics initialization -->
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32518208-2']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  <!-- Adds slight delay to links to allow async reporting -->
+  function trackOutboundLink(link, category, action) {
+    try {
+      _gaq.push(['_trackEvent', category , action]);
+    } catch(err){}
+
+    setTimeout(function() {
+      document.location.href = link.href;
+    }, 100);
+  }
+  </script>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<script src="./MLlib _ Apache Spark_files/jquery.js"></script>
+<script src="./MLlib _ Apache Spark_files/bootstrap.min.js"></script>
+<script src="./MLlib _ Apache Spark_files/lang-tabs.js"></script>
+<script src="./MLlib _ Apache Spark_files/downloads.js"></script>
+
+<div class="container" style="max-width: 1200px;">
+
+<div class="masthead">
+  
+    <p class="lead">
+      <a href="https://spark.apache.org/">
+      <img src="./MLlib _ Apache Spark_files/spark-logo-trademark.png" style="height:100px; width:auto; vertical-align: bottom; margin-top: 20px;"></a>
+      <a href="https://spark.apache.org/mllib/#"><span class="subproject">
+        MLlib
+      </span></a>
+    </p>
+  
+</div>
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><a href="https://spark.apache.org/downloads.html">Download</a></li>
+      <li class="dropdown">
+        <a href="https://spark.apache.org/mllib/#" class="dropdown-toggle" data-toggle="dropdown">
+          Libraries <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://spark.apache.org/sql/">SQL and DataFrames</a></li>
+          <li><a href="https://spark.apache.org/streaming/">Spark Streaming</a></li>
+          <li><a href="https://spark.apache.org/mllib/">MLlib (machine learning)</a></li>
+          <li><a href="https://spark.apache.org/graphx/">GraphX (graph)</a></li>
+          <li class="divider"></li>
+          <li><a href="https://spark.apache.org/third-party-projects.html">Third-Party Projects</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="https://spark.apache.org/mllib/#" class="dropdown-toggle" data-toggle="dropdown">
+          Documentation <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://spark.apache.org/docs/latest/">Latest Release (Spark 2.2.0)</a></li>
+          <li><a href="https://spark.apache.org/documentation.html">Older Versions and Other Resources</a></li>
+          <li><a href="https://spark.apache.org/faq.html">Frequently Asked Questions</a></li>
+        </ul>
+      </li>
+      <li><a href="https://spark.apache.org/examples.html">Examples</a></li>
+      <li class="dropdown">
+        <a href="https://spark.apache.org/mllib/#" class="dropdown-toggle" data-toggle="dropdown">
+          Community <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://spark.apache.org/community.html">Mailing Lists &amp; Resources</a></li>
+          <li><a href="https://spark.apache.org/contributing.html">Contributing to Spark</a></li>
+          <li><a href="https://spark.apache.org/improvement-proposals.html">Improvement Proposals (SPIP)</a></li>
+          <li><a href="https://issues.apache.org/jira/browse/SPARK">Issue Tracker</a></li>
+          <li><a href="https://spark.apache.org/powered-by.html">Powered By</a></li>
+          <li><a href="https://spark.apache.org/committers.html">Project Committers</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="https://spark.apache.org/mllib/#" class="dropdown-toggle" data-toggle="dropdown">
+           Developers <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="https://spark.apache.org/developer-tools.html">Useful Developer Tools</a></li>
+          <li><a href="https://spark.apache.org/versioning-policy.html">Versioning Policy</a></li>
+          <li><a href="https://spark.apache.org/release-process.html">Release Process</a></li>
+          <li><a href="https://spark.apache.org/security.html">Security</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="http://www.apache.org/" class="dropdown-toggle" data-toggle="dropdown">
+          Apache Software Foundation <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="http://www.apache.org/">Apache Homepage</a></li>
+          <li><a href="http://www.apache.org/licenses/">License</a></li>
+          <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+          <li><a href="http://www.apache.org/foundation/thanks.html">Thanks</a></li>
+          <li><a href="http://www.apache.org/security/">Security</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+</nav>
+
+
+<div class="row">
+  <div class="col-md-3 col-md-push-9">
+    <div class="news" style="margin-bottom: 20px;">
+      <h5>Latest News</h5>
+      <ul class="list-unstyled">
+        
+          <li><a href="https://spark.apache.org/news/spark-2-2-0-released.html">Spark 2.2.0 released</a>
+          <span class="small">(Jul 11, 2017)</span></li>
+        
+          <li><a href="https://spark.apache.org/news/spark-2-1-1-released.html">Spark 2.1.1 released</a>
+          <span class="small">(May 02, 2017)</span></li>
+        
+          <li><a href="https://spark.apache.org/news/spark-summit-june-2017-agenda-posted.html">Spark Summit (June 5-7th, 2017, San Francisco) agenda posted</a>
+          <span class="small">(Mar 31, 2017)</span></li>
+        
+          <li><a href="https://spark.apache.org/news/spark-summit-east-2017-agenda-posted.html">Spark Summit East (Feb 7-9th, 2017, Boston) agenda posted</a>
+          <span class="small">(Jan 04, 2017)</span></li>
+        
+      </ul>
+      <p class="small" style="text-align: right;"><a href="https://spark.apache.org/news/index.html">Archive</a></p>
+    </div>
+    <div class="hidden-xs hidden-sm">
+      <a href="https://spark.apache.org/downloads.html" class="btn btn-success btn-lg btn-block" style="margin-bottom: 30px;">
+        Download Spark
+      </a>
+      <p style="font-size: 16px; font-weight: 500; color: #555;">
+        Built-in Libraries:
+      </p>
+      <ul class="list-none">
+        <li><a href="https://spark.apache.org/sql/">SQL and DataFrames</a></li>
+        <li><a href="https://spark.apache.org/streaming/">Spark Streaming</a></li>
+        <li><a href="https://spark.apache.org/mllib/">MLlib (machine learning)</a></li>
+        <li><a href="https://spark.apache.org/graphx/">GraphX (graph)</a></li>
+      </ul>
+      <a href="https://spark.apache.org/third-party-projects.html">Third-Party Projects</a>
+    </div>
+  </div>
+
+  <div class="col-md-9 col-md-pull-3">
+    <div class="jumbotron">
+  <b>MLlib</b> is Apache Spark's scalable machine learning library.
+</div>
+
+<div class="row row-padded">
+  <div class="col-md-7 col-sm-7">
+    <h2>Ease of Use</h2>
+    <p class="lead">
+      Usable in Java, Scala, Python, and R.
+    </p>
+    <p>
+      MLlib fits into <a href="https://spark.apache.org/">Spark</a>'s
+      APIs and interoperates with <a href="http://www.numpy.org/">NumPy</a>
+      in Python (as of Spark 0.9) and R libraries (as of Spark 1.5).
+      You can use any Hadoop data source (e.g. HDFS, HBase, or local files), making it
+      easy to plug into Hadoop workflows.
+    </p>
+  </div>
+  <div class="col-md-5 col-sm-5 col-padded-top col-center">
+
+    <div style="margin-top: 15px; text-align: left; display: inline-block;">
+      <div class="code">
+        data = spark.read.format(<span class="string">"libsvm"</span>)\<br>
+	    &nbsp;&nbsp;.load(<span class="string">"hdfs://..."</span>)<br>
+        <br>
+        model = <span class="sparkop">KMeans</span>(k=10).fit(data)
+      </div>
+      <div class="caption">Calling MLlib in Python</div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-padded">
+  <div class="col-md-7 col-sm-7">
+    <h2>Performance</h2>
+    <p class="lead">
+      High-quality algorithms, 100x faster than MapReduce.
+    </p>
+    <p>
+      Spark excels at iterative computation, enabling MLlib to run fast.
+      At the same time, we care about algorithmic performance:
+      MLlib contains high-quality algorithms that leverage iteration, and
+      can yield better results than the one-pass approximations sometimes used on MapReduce.
+    </p>
+  </div>
+  <div class="col-md-5 col-sm-5 col-padded-top col-center">
+    <div style="width: 100%; max-width: 272px; display: inline-block; text-align: center;">
+      <img src="./MLlib _ Apache Spark_files/logistic-regression.png" style="width: 100%; max-width: 250px;">
+      <div class="caption" style="min-width: 272px;">Logistic regression in Hadoop and Spark</div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-padded" style="margin-bottom: 15px;">
+  <div class="col-md-7 col-sm-7">
+    <h2>Easy to Deploy</h2>
+    <p class="lead">
+      Runs on existing Hadoop clusters and data.
+    </p>
+    <p>
+      If you have a Hadoop 2 cluster, you can run Spark and MLlib without any pre-installation.
+      Otherwise, Spark is easy to run <a href="https://spark.apache.org/docs/latest/spark-standalone.html">standalone</a>
+      or on <a href="https://spark.apache.org/docs/latest/ec2-scripts.html">EC2</a> or <a href="https://mesos.apache.org/">Mesos</a>.
+      You can read from <a href="https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html">HDFS</a>, <a href="https://hbase.apache.org/">HBase</a>, or any Hadoop data source.
+    </p>
+  </div>
+  <div class="col-md-5 col-sm-5 col-padded-top col-center">
+    <img src="./MLlib _ Apache Spark_files/hadoop.jpg" style="width: 100%; max-width: 280px;">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-padded">
+    <h3>Algorithms</h3>
+    <p>
+      MLlib contains many algorithms and utilities.
+    </p>
+    <p>
+      ML algorithms include:
+    </p>
+    <ul class="list-narrow">
+      <li>Classification: logistic regression, naive Bayes,...</li>
+      <li>Regression: generalized linear regression, survival regression,...</li>
+      <li>Decision trees, random forests, and gradient-boosted trees</li>
+      <li>Recommendation: alternating least squares (ALS)</li>
+      <li>Clustering: K-means, Gaussian mixtures (GMMs),...</li>
+      <li>Topic modeling: latent Dirichlet allocation (LDA)</li>
+      <li>Frequent itemsets, association rules, and sequential pattern mining</li>
+    </ul>
+    <p>
+      ML workflow utilities include:
+    </p>
+    <ul class="list-narrow">
+      <li>Feature transformations: standardization, normalization, hashing,...</li>
+      <li>ML Pipeline construction</li>
+      <li>Model evaluation and hyper-parameter tuning</li>
+      <li>ML persistence: saving and loading models and Pipelines</li>
+    </ul>
+    <p>
+      Other utilities include:
+    </p>
+    <ul class="list-narrow">
+      <li>Distributed linear algebra: SVD, PCA,...</li>
+      <li>Statistics: summary statistics, hypothesis testing,...</li>
+    </ul>
+    <p>Refer to the <a href="https://spark.apache.org/docs/latest/ml-guide.html">MLlib guide</a> for usage examples.</p>
+  </div>
+
+  <div class="col-md-4 col-padded">
+    <h3>Community</h3>
+    <p>
+      MLlib is developed as part of the Apache Spark project. It thus gets
+      tested and updated with each Spark release.
+    </p>
+    <p>
+      If you have questions about the library, ask on the
+      <a href="https://spark.apache.org/community.html#mailing-lists">Spark mailing lists</a>.
+    </p>
+    <p>
+      MLlib is still a rapidly growing project and welcomes contributions. If you'd like to submit an algorithm to MLlib,
+      read <a href="https://spark.apache.org/contributing.html">how to
+      contribute to Spark</a> and send us a patch!
+    </p>
+  </div>
+
+  <div class="col-md-4 col-padded">
+    <h3>Getting Started</h3>
+    <p>
+      To get started with MLlib:
+    </p>
+    <ul class="list-narrow">
+      <li><a href="https://spark.apache.org/downloads.html">Download Spark</a>. MLlib is included as a module.</li>
+      <li>Read the <a href="https://spark.apache.org/docs/latest/ml-guide.html">MLlib guide</a>, which includes
+      various usage examples.</li>
+      <li>Learn how to <a href="https://spark.apache.org/docs/latest/#launching-on-a-cluster">deploy</a> Spark on a cluster
+        if you'd like to run in distributed mode. You can also run locally on a multicore machine
+        without any setup.
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-center">
+    <a href="https://spark.apache.org/downloads.html" class="btn btn-success btn-lg btn-multiline">
+      Download Apache Spark<br><span class="small">Includes MLlib</span>
+    </a>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+
+<footer class="small">
+  <hr>
+  Apache Spark, Spark, Apache, and the Spark logo are <a href="https://spark.apache.org/trademarks.html">trademarks</a> of
+  <a href="http://www.apache.org/">The Apache Software Foundation</a>.
+</footer>
+
+</div>
+
+
+
+</body></html>

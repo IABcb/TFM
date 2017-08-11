@@ -1,0 +1,66 @@
+
+2. descripcion del dataset
+
+fuente de datos
+variables
+extension
+
+3. overall architecture
+
+presentacion del esquema
+tecnologias
+interaccion entre ellas y el rol que desempeña cada una
+plataforma (portatil o cluster de amazon o donde), caracteristicas tecnicas
+
+- Tecnologías
+    - Python: https://www.python.org/ 2.7 y 3.5
+    - linux 16.04
+    - Shell Bash script: https://es.wikipedia.org/wiki/Bash
+    - Docker: https://www.docker.com/
+    - Kafka: https://kafka.apache.org/
+    - Kibana: https://www.elastic.co/products/kibana
+    - ElasticSearch: https://www.elastic.co/
+    - Spark, Spark Streaming: https://spark.apache.org/, https://spark.apache.org/streaming/
+    - Spark ML y MLlib (RandomForest)https://spark.apache.org/mllib/, https://spark.apache.org/docs/latest/ml-guide.html, https://es.wikipedia.org/wiki/Random_forest
+    - Jupyter: http://jupyter.org/
+    - TCPDUMP: http://www.tcpdump.org/tcpdump_man.html
+    - anaconda: https://docs.continuum.io/anaconda/
+
+4. Case studies
+
+analisis que me he planteado
+(clasificacion analisis, =========>> probar RandomForest, Grading boosting trees, regresion logistica multinomial* opcional
+benchmarks y resultados
+
+
+
+5. conclusiones y lineas futuras
+
+resultados pricipales
+lo que he aprendido
+lineas futuras
+highlights de proyecto (resultados mas importantes)
+
+- MEJORAS
+    - Logstash
+    - Otros métodos de clasificación
+    - Más métodos y mejores  generadores de tráfico para asimilarse mejor a la predicción por DTW y flows
+    - Usar coordenadas
+    - Mas usuarios
+
+6. bibliografia
+
+primero la de tipo articulos, libros
+si uso paginas de internet (dictiografia) va despues de la bibliografia
+
+titulo autor url fecha del ultimo acceso a la pagina
+
+importantes puntos 1 y 5,
+
+
+PRESENTACION
+
+HACER LA DEMO
+15 MINUTOS MAS PREGUNTAS (incluido la demo)
+ultima transparencias de conclusiones
+como mucho 15 transparencias (incluso menos)

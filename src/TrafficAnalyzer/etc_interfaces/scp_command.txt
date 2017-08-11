@@ -1,0 +1,2 @@
+scp -p 2222 <fichero> <usuario@ip_maquina_destino:directorio>
+scp -p 2222 <fichero> root@127.0.0.1

@@ -1,0 +1,1161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0100)http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+	<title>Tcpdump avanzado: El arte de capturar y analizar tráfico de red. | Iurlek - Igor Urraza</title>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - todas las entradas" href="http://blog.iurlek.com/feed/">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - todos los comentarios" href="http://blog.iurlek.com/comments/feed/">
+	<link rel="pingback" href="http://blog.iurlek.com/xmlrpc.php">
+
+	<!-- style START -->
+	<!-- default style -->
+	<style type="text/css" media="screen">@import url( http://blog.iurlek.com/wp-content/themes/inove/style.css );</style>
+	<!-- for translations -->
+		<!--[if IE]>
+		<link rel="stylesheet" href="http://blog.iurlek.com/wp-content/themes/inove/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	<!-- style END -->
+
+	<!-- script START -->
+	<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script async="" src="http://www.google-analytics.com/analytics.js"></script><script type="text/javascript" src="./TCPDUMP_FILTERS_files/base.js"></script>
+	<script type="text/javascript" src="./TCPDUMP_FILTERS_files/menu.js"></script>
+	<!-- script END -->
+
+	
+<!-- All in One SEO Pack 2.3.12.1 by Michael Torbert of Semper Fi Web Design[326,435] -->
+<meta name="description" content="Tcpdump avanzado: El arte de capturar y analizar tráfico de red. Analizador de red. Analizar de paquetes. Sniffer.">
+
+<meta name="keywords" content="sniffer,tcpdump,avanzado,escanear,capturar tráfico,redes">
+
+<link rel="canonical" href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/">
+<!-- /all in one seo pack -->
+<link rel="dns-prefetch" href="http://s0.wp.com/">
+<link rel="dns-prefetch" href="http://s.gravatar.com/">
+<link rel="dns-prefetch" href="http://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Iurlek - Igor Urraza » Tcpdump avanzado: El arte de capturar y analizar el tráfico de red. RSS de los comentarios" href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blog.iurlek.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.3"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./TCPDUMP_FILTERS_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="gtranslate-style-css" href="./TCPDUMP_FILTERS_files/gtranslate-style16.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./TCPDUMP_FILTERS_files/pagenavi-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="social-logos-css" href="./TCPDUMP_FILTERS_files/social-logos.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="./TCPDUMP_FILTERS_files/jetpack.css" type="text/css" media="all">
+<!-- This site uses the Google Analytics by MonsterInsights plugin v6.0.16 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-21574715-1', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('send','pageview');
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/jquery.js"></script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/jquery-migrate.min.js"></script>
+<link rel="https://api.w.org/" href="http://blog.iurlek.com/wp-json/">
+<link rel="prev" title="Nmap Avanzado: El arte de escanear." href="http://blog.iurlek.com/2011/07/nmap-avanzado-el-arte-de-escanear/">
+<link rel="next" title="Retorno a la fotografía" href="http://blog.iurlek.com/2011/10/retorno-a-la-fotografia/">
+<meta name="generator" content="WordPress 4.7.3">
+<link rel="shortlink" href="http://wp.me/psxAZ-8M">
+<link rel="alternate" type="application/json+oembed" href="http://blog.iurlek.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.iurlek.com%2F2011%2F10%2Ftcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red%2F">
+<link rel="alternate" type="text/xml+oembed" href="http://blog.iurlek.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.iurlek.com%2F2011%2F10%2Ftcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red%2F&amp;format=xml">
+
+<link rel="dns-prefetch" href="http://v0.wordpress.com/">
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/si_captcha.js"></script>
+<!-- begin SI CAPTCHA Anti-Spam - login/register form style -->
+<style type="text/css">
+.si_captcha_small { width:175px; height:45px; padding-top:10px; padding-bottom:10px; }
+.si_captcha_large { width:250px; height:60px; padding-top:10px; padding-bottom:10px; }
+img#si_image_com { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_reg { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_log { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_side_login { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_checkout { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_jetpack { border-style:none; margin:0; padding-right:5px; float:left; }
+img#si_image_bbpress_topic { border-style:none; margin:0; padding-right:5px; float:left; }
+.si_captcha_refresh { border-style:none; margin:0; vertical-align:bottom; }
+div#si_captcha_input { display:block; padding-top:15px; padding-bottom:5px; }
+label#si_captcha_code_label { margin:0; }
+input#si_captcha_code_input { width:65px; }
+p#si_captcha_code { clear: left; padding-top:10px; }
+.si-captcha-jetpack-error { color:#DC3232; }
+</style>
+<!-- end SI CAPTCHA Anti-Spam - login/register form style -->
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tcpdump avanzado: El arte de capturar y analizar el tráfico de red.">
+<meta property="og:url" content="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/">
+<meta property="og:description" content="Después de este periodo de inactividad cuyo único culpable ha sido el veranito, volvemos a la carga al igual que la moda en la temporada Otoño-Invierno, con ocasión de hablar sobre un programita ll…">
+<meta property="article:published_time" content="2011-10-01T21:16:11+00:00">
+<meta property="article:modified_time" content="2011-10-01T21:38:24+00:00">
+<meta property="og:site_name" content="Iurlek - Igor Urraza">
+<meta property="og:image" content="http://blog.iurlek.com/wp-content/uploads/2011/10/tcpdump-300x68.jpg">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary">
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+<style type="text/css"></style><link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./TCPDUMP_FILTERS_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./TCPDUMP_FILTERS_files/services.css"><style type="text/css">:root #content > #center > .dose > .dosesingle,
+:root #content > #right > .dose > .dosesingle,
+:root #header + #content > #left > #rlblock_left
+{display:none !important;}</style></head>
+
+
+<body>
+<!-- wrap START -->
+<div id="wrap">
+
+<!-- container START -->
+<div id="container">
+
+<!-- header START -->
+<div id="header">
+
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+		<h1 id="title"><a href="http://blog.iurlek.com/">Iurlek – Igor Urraza</a></h1>
+		<div id="tagline">La desconfianza es madre de la seguridad (Aristófanes)</div>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- navigation START -->
+<div id="navigation">
+	<!-- menus START -->
+	<ul id="menus">
+		<li class="page_item"><a class="home" title="Inicio" href="http://blog.iurlek.com/">Inicio</a></li>
+			<li class="cat-item cat-item-70"><a href="http://blog.iurlek.com/category/apple/" class="  ">Apple</a><ul class="children" style="visibility: hidden; display: block; left: 367px; top: 142px;"><li class="cat-item cat-item-71"><a href="http://blog.iurlek.com/category/apple/iphone/" class=" last">Iphone</a>
+</li></ul></li>
+	<li class="cat-item cat-item-86"><a href="http://blog.iurlek.com/category/certificaciones/">Certificaciones</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-87"><a href="http://blog.iurlek.com/category/certificaciones/cisco-certificaciones/" class=" last">Cisco</a>
+</li></ul></li>
+	<li class="cat-item cat-item-94"><a href="http://blog.iurlek.com/category/cisco/">cisco</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-28"><a href="http://blog.iurlek.com/category/cisco/routers-cisco/">Routers Cisco</a>
+</li><li class="cat-item cat-item-29"><a href="http://blog.iurlek.com/category/cisco/switches-cisco/" class=" last">Switches Cisco</a>
+</li></ul></li>
+	<li class="cat-item cat-item-8"><a href="http://blog.iurlek.com/category/citas/" title="Citas que nos han marcado">Citas</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-9"><a href="http://blog.iurlek.com/category/citas/seguridad-citas/" class=" last">Seguridad</a>
+</li></ul></li>
+	<li class="cat-item cat-item-98"><a href="http://blog.iurlek.com/category/fotografia/">fotografia</a>
+</li>
+	<li class="cat-item cat-item-101"><a href="http://blog.iurlek.com/category/ideas-inovadoras/">Ideas Inovadoras</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blog.iurlek.com/category/linux/" title="A mi fiel amigo el pinguino">Linux</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-16"><a href="http://blog.iurlek.com/category/linux/administracion-sistemas-linux/" title="Administracion sistemas Linux">Administracion</a>
+</li><li class="cat-item cat-item-72"><a href="http://blog.iurlek.com/category/linux/apache/">Apache</a>
+</li><li class="cat-item cat-item-4"><a href="http://blog.iurlek.com/category/linux/redes-inalambricas/" title="La tecnología inalámbrica de la mano del pingüino." class=" last">Redes Inalambricas</a>
+</li></ul></li>
+	<li class="cat-item cat-item-58"><a href="http://blog.iurlek.com/category/monitorizacion/" title="Monitorización de Sistemas">monitorizacion</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://blog.iurlek.com/category/musica/" title="Musica">musica</a>
+</li>
+	<li class="cat-item cat-item-73"><a href="http://blog.iurlek.com/category/navegadores/">Navegadores</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-74"><a href="http://blog.iurlek.com/category/navegadores/firefox/" class=" last">FireFox</a>
+</li></ul></li>
+	<li class="cat-item cat-item-85"><a href="http://blog.iurlek.com/category/navidad/">Navidad</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blog.iurlek.com/category/presentacion/" title="Presentación">Presentación</a>
+</li>
+	<li class="cat-item cat-item-68"><a href="http://blog.iurlek.com/category/programacion/" title="Lenguajes de programación">Programación</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-69"><a href="http://blog.iurlek.com/category/programacion/c/" class=" last">C</a>
+</li></ul></li>
+	<li class="cat-item cat-item-91"><a href="http://blog.iurlek.com/category/seguridad/" title="Todo lo referente a la seguridad">Seguridad</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-37"><a href="http://blog.iurlek.com/category/seguridad/cifrado/">cifrado</a>
+</li><li class="cat-item cat-item-67"><a href="http://blog.iurlek.com/category/seguridad/enumeracion/">Enumeración</a>
+</li><li class="cat-item cat-item-10"><a href="http://blog.iurlek.com/category/seguridad/herramientas/" class=" subtitle">Herramientas</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-30"><a href="http://blog.iurlek.com/category/seguridad/herramientas/auditorias/">Auditorias</a>
+</li><li class="cat-item cat-item-11"><a href="http://blog.iurlek.com/category/seguridad/herramientas/herramientas-seguridad-linux/" title="Herramientas de seguridad Linux" class=" subtitle">Linux</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-20"><a href="http://blog.iurlek.com/category/seguridad/herramientas/herramientas-seguridad-linux/sniffer/" class=" last">Sniffer</a>
+</li></ul></li><li class="cat-item cat-item-19"><a href="http://blog.iurlek.com/category/seguridad/herramientas/ram/">RAM</a>
+</li><li class="cat-item cat-item-12"><a href="http://blog.iurlek.com/category/seguridad/herramientas/herramientas-seguridad-windows/" title="Herramientas de seguridad para Windows" class=" last subtitle">Windows</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-13"><a href="http://blog.iurlek.com/category/seguridad/herramientas/herramientas-seguridad-windows/chequear-vulneravilidades-windows/" title="Herramientas para chequear vulnerabilidades en Windows">Check Vulnerabilidades</a>
+</li><li class="cat-item cat-item-24"><a href="http://blog.iurlek.com/category/seguridad/herramientas/herramientas-seguridad-windows/sniffer-herramientas-seguridad-windows-herramientas-seguridad/" class=" last">Sniffer</a>
+</li></ul></li></ul></li><li class="cat-item cat-item-75"><a href="http://blog.iurlek.com/category/seguridad/scanner/" class=" subtitle">Network Scanner</a><ul class="children" style="visibility: hidden; display: block;"><li class="cat-item cat-item-76"><a href="http://blog.iurlek.com/category/seguridad/scanner/nmap/">nmap</a>
+</li><li class="cat-item cat-item-77"><a href="http://blog.iurlek.com/category/seguridad/scanner/tcpdump/" class=" last">tcpdump</a>
+</li></ul></li><li class="cat-item cat-item-38"><a href="http://blog.iurlek.com/category/seguridad/conexiones-remotas/" class=" last">SSH</a>
+</li></ul></li>
+	<li class="cat-item cat-item-100"><a href="http://blog.iurlek.com/category/voluntechies/">Voluntechies</a>
+</li>
+		<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+	</ul>
+	<!-- menus END -->
+
+	<!-- searchbox START -->
+	<div id="searchbox">
+					<form action="http://blog.iurlek.com/" method="get">
+				<div class="content">
+					<input type="text" class="textfield searchtip" name="s" size="24" value="">
+					<input type="submit" class="button" value="">
+				</div>
+			</form>
+			</div>
+<script type="text/javascript">
+//<![CDATA[
+	var searchbox = MGJS.$("searchbox");
+	var searchtxt = MGJS.getElementsByClassName("textfield", "input", searchbox)[0];
+	var searchbtn = MGJS.getElementsByClassName("button", "input", searchbox)[0];
+	var tiptext = "Type text to search here...";
+	if(searchtxt.value == "" || searchtxt.value == tiptext) {
+		searchtxt.className += " searchtip";
+		searchtxt.value = tiptext;
+	}
+	searchtxt.onfocus = function(e) {
+		if(searchtxt.value == tiptext) {
+			searchtxt.value = "";
+			searchtxt.className = searchtxt.className.replace(" searchtip", "");
+		}
+	}
+	searchtxt.onblur = function(e) {
+		if(searchtxt.value == "") {
+			searchtxt.className += " searchtip";
+			searchtxt.value = tiptext;
+		}
+	}
+	searchbtn.onclick = function(e) {
+		if(searchtxt.value == "" || searchtxt.value == tiptext) {
+			return false;
+		}
+	}
+//]]>
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21574715-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	<!-- searchbox END -->
+
+	<div class="fixed"></div>
+</div>
+<!-- navigation END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+	<div id="main">
+
+
+	<div id="postpath">
+		<a title="Ir a la página de inicio." href="http://blog.iurlek.com/">Inicio</a>
+		 &gt; <a href="http://blog.iurlek.com/category/linux/" rel="category tag">Linux</a>, <a href="http://blog.iurlek.com/category/seguridad/" rel="category tag">Seguridad</a>, <a href="http://blog.iurlek.com/category/seguridad/scanner/tcpdump/" rel="category tag">tcpdump</a>		 &gt; Tcpdump avanzado: El arte de capturar y analizar el tráfico de red.	</div>
+
+	<div class="post" id="post-544">
+		<h2>Tcpdump avanzado: El arte de capturar y analizar el tráfico de red.</h2>
+		<div class="info">
+			<span class="date">Sábado, 1 de Octubre de 2011</span>
+			<span class="author"><a href="http://blog.iurlek.com/author/pedimave/" title="Entradas de pedimave" rel="author">pedimave</a></span>										<span class="addcomment"><a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#respond">Dejar un comentario</a></span>
+				<span class="comments"><a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comments">Ir a comentarios</a></span>
+						<div class="fixed"></div>
+		</div>
+		<div class="content">
+			<p style="text-align: center;"><a href="http://blog.iurlek.com/wp-content/uploads/2011/10/tcpdump.jpg"><img data-attachment-id="567" data-permalink="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/tcpdump/" data-orig-file="http://blog.iurlek.com/wp-content/uploads/2011/10/tcpdump.jpg" data-orig-size="397,90" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;}" data-image-title="tcpdump" data-image-description="" data-medium-file="http://blog.iurlek.com/wp-content/uploads/2011/10/tcpdump-300x68.jpg" data-large-file="http://blog.iurlek.com/wp-content/uploads/2011/10/tcpdump.jpg" class="aligncenter size-medium wp-image-567" title="tcpdump" src="./TCPDUMP_FILTERS_files/tcpdump-300x68.jpg" alt="" width="300" height="68" srcset="http://blog.iurlek.com/wp-content/uploads/2011/10/tcpdump-300x68.jpg 300w, http://blog.iurlek.com/wp-content/uploads/2011/10/tcpdump.jpg 397w" sizes="(max-width: 300px) 100vw, 300px"></a></p>
+<p>Después de este periodo de inactividad cuyo único culpable ha sido el veranito, volvemos a la carga al igual que la moda en la temporada Otoño-Invierno, con ocasión de hablar sobre un programita llamado <a href="http://es.wikipedia.org/wiki/Tcpdump" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Tcpdump&#39;, &#39;Tcpdump&#39;);" title="Tcpdump" target="_blank">Tcpdump</a>.</p>
+<p>Hablar de Tcpdump, es hablar de uno de los analizadores de paquetes de red más conocidos e importantes en lo que a línea de comandos en entornos <a href="http://es.wikipedia.org/wiki/Unix" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Unix&#39;, &#39;Unix&#39;);" title="Unix" target="_blank">Unix</a> se refiere. Su&nbsp; principal función es la de analizar el tráfico que circula por la red. Este programita ya viene del lejano 1987, época en la que&nbsp; sus autores Van Jacobson, Craig Leres y Steven McCanne trabajaban de la mano en el Lawrence Berkeley Laboratory Network Research Group, siendo este ampliado por Andrew Tridgel..</p>
+<p>Seguro que rápidamente lo relacionáis con el término <a href="http://es.wikipedia.org/wiki/Sniffer" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Sniffer&#39;, &#39;Sniffer&#39;);" title="Sniffer" target="_blank">Sniffer</a>. Hablar de&nbsp; Sniffers,&nbsp; analizadores de red o analizadores de paquetes es hablar de un tipo de software que&nbsp; nos va a permitir&nbsp; realizar capturas de tráfico en nuestra red para posteriormente poder realizar un análisis de la información recogida.&nbsp; Se trata de configurar nuestra tarjeta de red en un modo denominado <a href="http://es.wikipedia.org/wiki/Modo_promiscuo" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Modo_promiscuo&#39;, &#39;promiscuo&#39;);" title="Modo Promiscuo" target="_blank">promiscuo</a>, que nos permita no solo escuchar los paquetes que vienen destinados a nosotros, sino que se trata de escuchar todo el tráfico que se genera en la red. Vamos… lo que se viene a denominar un cotilla. Poner la oreja a ver si cae algo que nos interese.</p>
+<p>¿ Para qué sirven entonces este tipo de programas ?. Ciertamente&nbsp; no es una pregunta dirigida a los administradores de redes. Eso seguro!. Para ellos se trata de herramientas indispensable en su labor diaria.</p>
+<p><span id="more-544"></span>Entre sus muchas funciones podemos citar como ejemplos: Detectar problemas de red, intrusiones,&nbsp; conocer y monitorizar el&nbsp; tráfico que se está generando, control de ancho de banda….aunque hay quien le pueda darle otro tipo de utilidad. Si bien es cierto que hemos comentado que se trata de una herramienta que nos va a permitir escuchar el tráfico que se produce en nuestra red, quizás podamos hacer uso de ella para algo más que solucionar problemas. Lo que se viene a denominar un arma de doble filo.</p>
+<p>Históricamente en todas aquellas redes centralizadas a través de concentradores <a href="http://es.wikipedia.org/wiki/Hub" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Hub&#39;, &#39;HUB&#39;);" title="HUB" target="_blank">HUB</a>, era muy fácil colocar un Sniffer que nos permitiese escuchar todo el tráfico que se generaba en la red. ¿ Y qué nos podemos encontrar en las capturas?. Por ejemplo, muchos usuarios y contraseñas. Hay que tener claro que son muchos los protocolos inseguros por naturaleza en los que&nbsp; los usuarios / contraseñas viajaban en texto claro. Protocolos como&nbsp; <a href="http://es.wikipedia.org/wiki/SMTP" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/SMTP&#39;, &#39;Smtp&#39;);" title="Smtp" target="_blank">Smtp</a>,&nbsp; <a href="http://es.wikipedia.org/wiki/Pop3" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Pop3&#39;, &#39;Pop3&#39;);" title="Pop3" target="_blank">Pop3</a>, <a href="http://es.wikipedia.org/wiki/Ftp" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Ftp&#39;, &#39;Ftp&#39;);" title="Ftp" target="_blank">Ftp</a>, <a href="http://es.wikipedia.org/wiki/Http" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Http&#39;, &#39;Http&#39;);" title="Http" target="_blank">Http</a>, <a href="http://es.wikipedia.org/wiki/Telnet" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Telnet&#39;, &#39;Telnet&#39;);" title="Telnet" target="_blank">Telnet</a>…. Pueden ser solo algunos ejemplos. Como casi siempre sucede en el mundo IT, la seguridad no suele ser la fase más importante a la hora de abarcar un proyecto.</p>
+<p>Ya que hemos mencionado a nuestros amigos los HUB, vamos a aprovechar para comprobar las&nbsp; posibilidades de colocar un Sniffer ante la desaparición de estos y la aparición de los temibles <a href="http://es.wikipedia.org/wiki/Switch" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Switch&#39;, &#39;Switches&#39;);" title="Switch" target="_blank">Switches</a>.</p>
+<p>Al referenciar a los HUBs, tenemos que citar términos como los temidos dominios de colisión, que no son más que segmentos físicos en los que los dispositivos se tienen que pegar para transmitir la información. Lo que pasa es que dos dispositivos pueden transmitir información al mismo tiempo produciéndose las temidas colisiones y por ende un menor rendimiento de la red. Queda claro que a medida que incorporamos más dispositivos las probabilidades de que se produzca alguna colisión tiende a ser mayor.</p>
+<p>Luego están los dominio de difusión o Broadcast que lo forman los equipos que comparten direccionamiento lógico en un mismo segmento. Se envían y reciben mensajes Broadcast. Seguro que alguna vez hemos oído el término “tormenta de Broadcast”, que no es más que inundar la red con estos mensajitos, que hacen que la red se congestione&nbsp; perdiendo rendimiento.</p>
+<p>Ahora vamos a ver el porque de ese cambio de HUBs a Switches. En el caso de los HUB tenemos un gran dominio de colisión que se soluciona con los Switches. En estos existe un dominio de colisión por puerto (micro segmentación), con lo que conseguimos una gran mejora en el rendimiento. Pero tenemos un dominio de Broadcast, que también podemos controlar a través de las <a href="http://es.wikipedia.org/wiki/VLAN" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/VLAN&#39;, &#39;Vlan&#39;);" title="Vlan" target="_blank">Vlan</a>. También sabemos que los Routers separan los dominios de difusión. Con lo cual antaño en muchos casos simplemente, cambiando el HUB por el Switch conseguíamos aumentar el rendimiento de nuestra red. A partir de ese momento los Switches han ido evolucionando permitiéndonos trabajar en capa 3 o superiores, lo que viene a llamarse multicapa.</p>
+<p>Y porque esta charla, porque antes era muy fácil colocar un equipo con una tarjeta de red en modo promiscuo y escuchar&nbsp; todo lo que la red nos decía. Ahora con los Switches a priori ya no vamos a poder escuchar tantas cosas. Tenemos que colocar el Sniffer en algún sitio por el que pase todo el tráfico que nos interese. Esto lo podemos hacer con las nuevas capacidades de los switches como el <a href="http://es.wikipedia.org/wiki/Puerto_espejo" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Puerto_espejo&#39;, &#39;Port Mirroring (Puertos espejo)&#39;);" title="Port Mirroring" target="_blank">Port Mirroring (Puertos espejo)</a>, Electrónica por la que pase todo el tráfico (<a href="http://es.wikipedia.org/wiki/Cortafuegos_%28inform%C3%A1tica%29" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Cortafuegos_%28inform%C3%A1tica%29&#39;, &#39;Firewalls&#39;);" title="Firewall" target="_blank">Firewalls</a>, <a href="http://es.wikipedia.org/wiki/TAP" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/TAP&#39;, &#39;TAP&#39;);" title="TAP" target="_blank">TAP</a>, Apliance… aunque si tenemos técnicas como el <a href="http://es.wikipedia.org/wiki/ARP_Spoofing" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/ARP_Spoofing&#39;, &#39;envenenamiento de ARP&#39;);" title="ARP Poisoning" target="_blank">envenenamiento de ARP</a> para que este pase por nosotros.</p>
+<p>Como siempre en estos casos las herramientas pueden ser utilizadas para hacer el bien o el mal. Lo importante es conocer la topología de la red para saber donde debemos colocar a nuestro querido Sniffer. Debemos buscar un punto en el cual poder capturar todo el tráfico. Esto último que acabo de conectar es muy importante ya que si nos encontramos un buen punto veremos que únicamente veremos nuestro tráfico, <a href="http://es.wikipedia.org/wiki/Broadcast_%28inform%C3%A1tica%29" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Broadcast_%28inform%C3%A1tica%29&#39;, &#39;Broadcast&#39;);" title="BroadCast" target="_blank">Broadcast</a>, DHCP-ARP …</p>
+<p>Después de esta tremenda Brasaaaaa… vamos a hablar de lo que nos interesa. TCPDUMP!!!.</p>
+<p>Si preguntamos a nuestro sistema Debian por Tcpdump, nos dirá:</p>
+<pre><strong>#apt-cache search -f tcpdump</strong>
+
+<em>Package: tcpdump</em>
+<em> Maintainer: Romain Francoise </em>
+<em> Description: A powerful tool for network monitoring and data acquisition</em>
+<em> This program allows you to dump the traffic on a network. tcpdump</em>
+<em> is able to examine IPv4, ICMPv4, IPv6, ICMPv6, UDP, TCP, SNMP, AFS</em>
+<em> BGP, RIP, PIM, DVMRP, IGMP, SMB, OSPF, NFS and many other packet</em>
+<em> types.</em>
+<em> .</em>
+<em> It can be used to print out the headers of packets on a network</em>
+<em> interface, filter packets that match a certain expression. You can</em>
+<em> use this tool to track down network problems, to detect "ping attacks"</em>
+<em> or to monitor network activities.</em>
+<em> Homepage: http://www.tcpdump.org/</em>
+<em> Tag: admin::monitoring, interface::commandline, network::scanner, protocol::{ip,ipv6,ssl}, role::program, scope::utility, use::monitor</em></pre>
+<p>Pues esoooo!. Lo que ya hemos comentado. Es un programita que se apoya en la librería libcap para la captura de paquetes.</p>
+<p>Como siempre hemos dicho que el movimiento se demuestra andando, vamos a dejarnos de tanta palabrería y a funcionar.</p>
+<p>En vez de definir todas las opciones, expresiones y posibilidades de la herramienta, las iremos viendo a través de ejemplos que siempre suele quedar mas clarito.</p>
+<p>Vamos a ver sobre que interfaces podemos empezar a escuchar tráfico:</p>
+<pre><strong>#tcpdump -D</strong>
+<em>1.eth0</em>
+<em> 2.wlan0</em>
+<em> 3.any (Pseudo-device that captures on all interfaces)</em>
+<em> 4.lo</em></pre>
+<p>Ahora seleccionamos la interface sobre la que lanzar la captura</p>
+<pre><strong>#tcpdump –i wlan0 o #tcpdump –i 2</strong>
+<em>La respuesta va ser una línea del tipo</em>
+<em> 20:50:43.975606 IP portatil.34296 &gt; fx-in-f106.1e100.net.www: Flags [S], seq 2560890220, win 5840, options [mss 1460,sackOK,TS val 1445388 ecr 0,nop, wscale 6], length 0</em></pre>
+<p>Para detener la captura de paquetes, presionaremos&nbsp; CTRL+C<br>
+<strong></strong></p>
+<p>Vamos a ver la sintaxis a través de un ejemplo sencillo.</p>
+<pre><strong>#tcpdump –n –i wlan0</strong>
+<em>20:50:43.975606 IP 10.200.X.X.34296 &gt; 74.125.39.106.80: Flags [S], seq
+ 2560890220, win 5840, options [mss 1460,sackOK,TS val 1445388 ecr 0,nop, wscale 6],
+ length 0</em></pre>
+<p>El formato general de la línea mostrada es el siguiente:</p>
+<pre><strong>timestamp src &gt; dst: flags data-seqno ack window urgent options</strong></pre>
+<ul>
+<li><strong>Timestamp (20:50:43.975606)</strong> nos da la fecha en la que se produce el evento. Vemos que tenemos fracciones de segundo, ya que puede haber varios paquetes por segundo</li>
+<li><strong>Src (10.200.X.X.34296 ) y dst(74.125.39.106.80)</strong> son las IP host de Origen-destino junto con su puerto.<br>
+<strong>&gt; Dirección del flujo de datos</strong>.</li>
+<li><strong>Flags [S]&nbsp;</strong> – Combinación de todas las posibles banderas que ya conocemos S (SYN), F (FIN), P (PUSH), R&nbsp; (RST),&nbsp; U&nbsp; (URG),&nbsp; W(ECN&nbsp; CWR), E (ECN-Echo) or `.’ (ACK), or `none’ if no flags are set.</li>
+<li><strong>Data-seqno (seq 2560890220)</strong> Describe el numero de secuencia de la porción de datos</li>
+<li><strong>Ack</strong> – Numero de secuencia del próximo byte que se espera recibir en la conexión.</li>
+<li><strong>Window&nbsp; (win 5840)</strong> Informa del tamaño de ventana.</li>
+<li><strong>Urg</strong> indica que hay información que hay que procesar como urgente en el paquete.</li>
+<li><strong>Options</strong> (options [mss 1460,sackOK,TS val 1445388 ecr 0,nop,wscale 6], )– Opciones Tcp que han de ir entre corchetes .</li>
+</ul>
+<p>Es importante comentar que los datos de src, dst y Flags han de estar siempre presentes. El resto de los campos dependerán en función del contenido de las cabeceras del protocolo TCP.</p>
+<p>Ahora que ya conocemos el formato, vamos a ir viendo las opciones de Tcpdump a la hora de realizar la captura:</p>
+<p><strong>-n</strong>: No realiza resolución de nombre</p>
+<pre><strong>#tcpdump –n –i wlan0</strong>
+<em># 21:14:49.044773 IP 10.207.X.X.36837 &gt; 74.125.39.105.80: Flags [P.], seq 3278661926:3278662801, ack 173863466, win 721, options [nop,nop,TS val 1806655 ecr1295483293], length 875</em></pre>
+<p><strong>-A:</strong> escribe cada paquete en formato ASCII (puede resultar útil para páginas web)</p>
+<pre><strong>#tcpdump -n -A -i wlan0 host</strong>
+<em>tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</em>
+<em> listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes</em>
+<em> 21:16:41.909178 IP 10.207.X.X.36837 &gt; 74.125.39.105.80: Flags [P.], seq 3278663838:3278664713, ack 173879623, win 1002, options [nop,nop,TS val 1834871 ecr 1295511797], length 875</em>
+<em> E...(.@.@...</em>
+<em> ..fJ}'i...P.lp.</em>
+<em> ]1G...........</em>
+<em> ...wM7..GET / HTTP/1.1</em>
+<em> Host: www.google.es</em>
+<em> User-Agent: Mozilla/5.0 (X11; Linux i686; rv:5.0) Gecko/20100101 Firefox/5.0 Iceweasel/5.0</em>
+<em> Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</em>
+<em> Accept-Language: en-us,en;q=0.5</em>
+<em> Accept-Encoding: gzip, deflate</em>
+<em> …….</em></pre>
+<p><strong>-c&nbsp; X:</strong> Se detiene después de recoger X paquetes</p>
+<pre><em>#tcpdump -n -A -i wlan0 -c 1</em>
+<em> 21:19:33.355015 IP 10.207.X.X.54292 &gt; 74.125.39.147.80: Flags [S], seq 3904402581, win 5840, options [mss 1460,sackOK,TS val 1877733 ecr 0,nop,wscale 6], length 0</em>
+<em> 1 packets captured</em></pre>
+<p><strong>-e:</strong> imprime encabezados a nivel de enlace</p>
+<pre><em> #tcpdump -e -i wlan0 –c1</em>
+<em> 21:20:21.772273 00:22:fb:9a:xx:xx &gt; 00:18:39:ae:8x:a2, ethertype IPv4 (0x0800), length 941: 10.207.x.x.54292 &gt; 74.125.39.147.80: Flags [P.], seq 3904405615:3904406490, ack 2703453103, win 721, options [nop,nop,TS val 1889837 ecr 945894816], length 875 1 packets captured</em></pre>
+<p><strong>-p:</strong> pone la tarjeta en modo no promiscuo</p>
+<p>Con <em>ifconfig –a</em> vemos si la tarjeta se encuentra en modo promiscuo<br>
+<strong></strong></p>
+<p><strong>-q:</strong> imprime menos información por lo que las líneas son más cortas</p>
+<pre><em> #tcpdump -q -i wlan0 –c1</em>
+<em> 21:30:38.616870 IP portatil.local.57740 &gt; fx-in-f99.1e100.net.www: tcp 0</em>
+<em> 1 packets captured</em></pre>
+<p><strong>-r:</strong> lee los paquetes guardados con la opción –w</p>
+<p><strong>-S:</strong> imprime valores absolutos de números de secuencia</p>
+<p><strong>-s:</strong> tamaño (por defecto 65535 bytes)</p>
+<p><strong>-t</strong> que no escriba el timestamp</p>
+<pre><strong>#tcpdump -t -q -i wlan0 -c1</strong>
+<em>tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</em>
+<em> IP portatil.local.42355 &gt; fx-in-f147.1e100.net.www: tcp 5</em></pre>
+<p><strong>-tttt</strong> vamos a ver fecha / hora</p>
+<pre><strong>#tcpdump -tttt -q -i wlan0 -c1</strong>
+<em>listening on wlan0, link-type EN10MB (Ethernet), capture size 65535 bytes</em>
+<em> 2011-09-28 21:38:35.350830 IP pedlap.local.42355 &gt; fx-in-f147.1e100.net.www: tcp 5</em></pre>
+<p><strong>-w:</strong> fichero escribe un fichero con la salida</p>
+<pre><em> #tcpdump -tttt -q -i wlan0 -c1 -w fichero.cap</em></pre>
+<p><strong>-G:</strong>&nbsp; Rota el fichero especificado con la opcion -w segundos</p>
+<p><strong>-v:</strong> información de salida, –<strong>vv</strong> mas …, –<strong>vvv</strong> y mas …</p>
+<p><strong>-x:</strong>. escribe la información de cada paquete en Hex menos cabeceras a nivel de enlace.</p>
+<p>–<strong>gateway</strong> host: imprimir tráfico a través de host gateway&nbsp; Internet.</p>
+<pre><strong>#tcpdump -x -q -i wlan0 -c1</strong>
+<em>21:41:04.794378 IP portatil.local.42895 &gt; fx-in-f103.1e100.net.www: tcp 0</em>
+<em> 0x0000:&nbsp; 4510 003c acda 4000 4006 3ab8 0acf d666</em>
+<em> 0x0010:&nbsp; 4a7d 2767 a78f 0050 50f4 86a0 0000 0000</em>
+<em> 0x0020:&nbsp; a002 16d0 3423 0000 0204 05b4 0402 080a</em>
+<em> 0x0030:&nbsp; 0006 2a7a 0000 0000 0103 0306</em></pre>
+<p><strong>-xx:</strong> escribe la información de cada paquete en Hex menos cabeceras a nivel de enlace.</p>
+<p><strong>-X:</strong>. escribe la información de cada paquete en Hex y Decimal<br>
+<strong></strong></p>
+<p><strong>-XX:</strong>&nbsp; escribe la información de cada paquete en Hex y Decimal</p>
+<p>Vamos ahora a por las <strong>EXPRESIONES</strong></p>
+<p>Jugar con esllas nos van a permitir filtrar resultados.</p>
+<p><strong>host:</strong> Filtrar el tráfico por Host.</p>
+<pre><strong>#tcpdump -n -i wlan0 -c1 host www.google.es</strong>
+<em>21:47:26.704685 IP 10.207.X.X.53749 &gt; 74.125.39.106.80: Flags [S], seq 3929171104, win 5840, options [mss 1460,sackOK,TS val 499568 ecr 0,nop,wscale 6], length 0</em></pre>
+<p>Otro ejemplito en este sentido: <strong>#tcpdump ip host www.google.es and not www.bing.com</strong></p>
+<p><strong>port:</strong> mostrar solo tráfico de un determinado puerto.</p>
+<pre><strong>#tcpdump -n -q -i wlan0 -n port 80</strong>
+<em> 21:50:06.758861 IP 10.207.X.X.53749 &gt; 74.125.39.106.80: tcp 5</em>
+<em> 21:50:06.880112 IP 74.125.X.X.80 &gt; 10.207.214.102.53749: tcp 0</em></pre>
+<p><strong>dst host host</strong>: Tráfico con un determinado host como destino.</p>
+<pre><strong># tcpdump -i wlan0 dst host www.google.es</strong></pre>
+<p><strong>src host host:</strong> Trafico con un determinado host como origen.</p>
+<pre><strong>#tcpdump -i wlan0 src host 10.20.1.90</strong></pre>
+<p>Si queremos jugar con las direcciones MAC al igual que con los host.</p>
+<ul>
+<li><strong>ether dst ehost</strong></li>
+<li><strong> ether src ehost</strong></li>
+<li><strong> ether host ehost</strong></li>
+</ul>
+<pre><strong>#tcpdump -i wlan0 ether dst 00:22:fb:9a:57:72</strong></pre>
+<p>Si ahora queremos recoger información de una determinada red:</p>
+<ul>
+<li><strong>dst net net</strong></li>
+<li><strong> src net net</strong></li>
+<li><strong> net net</strong></li>
+<li><strong> net net mask netmask</strong></li>
+</ul>
+<pre><strong>#tcpdump -i wlan0 net 10.207.X.X/24</strong></pre>
+<p>Si queremos trabajar con puertos:</p>
+<ul>
+<li><strong>dst port port</strong></li>
+<li><strong> src port port</strong></li>
+</ul>
+<pre><strong>#tcpdump -i wlan0 port 22 or 23</strong></pre>
+<p><strong>not:</strong>&nbsp; Negamos una expresión.</p>
+<pre><strong>#tcpdump -i wlan0 "tcp src port 80" and not host 1.1.1.1</strong></pre>
+<p><strong>ip proto protocol:</strong> Especificar un determinado protocolo.</p>
+<pre><strong>#tcpdump -i wlan0 ip proto 6 = tcpdump tcp -i wlan0 (tcp , udp, icmp) = #tcpdump -i wlan0 ip proto \\tcp</strong>
+<strong>#cat /etc/protocols | grep tcp</strong>
+<em>tcp&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TCP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # transmission control protocol</em></pre>
+<p>Podemos jugar con los tamaños (bytes)</p>
+<ul>
+<li><strong>less leghnt</strong></li>
+<li><strong> greather length</strong></li>
+</ul>
+<pre><strong>#tcpdump -i wlan0 greater 20</strong></pre>
+<p>Y muchas mas expresiones que os animo a consultar en el man tcpdump, pero creo que nos hacemos una idea ¿verdad ?.</p>
+<pre><strong>ip6 proto protocol, ip6 protochain protocol, ip protochain protocol</strong>
+<strong> ip broadcast, ether multicast, ip multicast, ip6 multicast, ether proto protocol</strong>
+<strong> decnet src host, decnet dst host, decnet host, ip, ip6, arp, rarp, atalk, aarp</strong>
+<strong> decnet. iso, stp, ipx, netbeui, vlan vlan_id, tcp , udp, icmp, clnp, esis, isis</strong></pre>
+<p>Tambien podemos combinar expresiones:</p>
+<ul>
+<li><strong>Negacion : ! o “not”</strong></li>
+<li><strong>And : &amp;&amp; o “and”</strong></li>
+<li><strong>Or : || o “or”</strong></li>
+</ul>
+<p>Ejemplos:</p>
+<pre><strong># tcpdump -i wlan0 ip and not net 1.1.1.1</strong>
+<strong> #tcpdump host 10.200.1.1 and \( 1.1.1.1 or 2.2.2.2 \)</strong>
+<strong> #tcpdump -i wlan0 "tcp src port 80"</strong>
+<strong> #tcpdump -n -i wlan0 "not (tcp port ssh and host 1.1.1.1 and host 2.2.2.2)"</strong></pre>
+<p><strong>#tcpdump -i wlan0 ‘((tcp) and (port 80) and ((!dst host www.google.es) &amp;&amp; (!dst host www.bing.com)))’</strong></p>
+<p>Ahora vamos a complicarlo un poquito más y realizar filtrados con el que se muestra en el siguiente ejemplo:</p>
+<p>Ejemplo de <a href="http://es.wikipedia.org/wiki/Transmission_Control_Protocol" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://es.wikipedia.org/wiki/Transmission_Control_Protocol&#39;, &#39;3-way handshake protocol&#39;);" title="3 Way" target="_blank">3-way handshake protocol</a>: vamos a recoger solo los paquetes SYN.</p>
+<p>El diagrama de una cabecera TCP sin opciones seria tal que así.</p>
+<pre>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Source Port          |       Destination Port        |Octeto 0 -3
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                        Sequence Number                        |Octeto 4 -7
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                    Acknowledgment Number                      |Octeto 8 - 11
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Data |       |C|E|U|A|P|R|S|F|                               |
+| Offset|  Res. |W|C|R|C|S|S|Y|I|            Window             |Octeto 12 -15
+|       |       |R|E|G|K|H|T|N|N|                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|           Checksum            |         Urgent Pointer        |Octeto 16 - 19
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</pre>
+<p>Si nos fijamos los Flags se encuentran entre el octeto 12 y el 15. Exactamente en los bits contenidos en el octeto 13</p>
+<pre>0                   1                   2                   3
+0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Data |       |C|E|U|A|P|R|S|F|                               |
+| Offset|  Res. |W|C|R|C|S|S|Y|I|            Window             |Octeto 12 -15
+|       |       |R|E|G|K|H|T|N|N|                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|       |       |Octeto 13      |                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+Si ahora nos fijamos en el octeto 13
+
++-+-+-+-+-+-+-+-+
+|C|E|U|A|P|R|S|F|
+|W|C|R|C|S|S|Y|I|
+|R|E|G|K|H|T|N|N|
++-+-+-+-+-+-+-+-+
+ 7 6 5 4 3 2 1 0</pre>
+<p>Si recibimos un paquete con el bit SYN activado:</p>
+<pre>+-+-+-+-+-+-+-+-+
+|0|0|0|0|0|0|1|0|
++-+-+-+-+-+-+-+-+
+ 7 6 5 4 3 2 1 0</pre>
+<p>Asumiendo que el octeto es un integer sin signo, en Binario sería igual a 00000010 que en notación decimal corresponde al número 2. Esto lo podemos expresar como <strong>tcp[13] == 2. </strong></p>
+<pre><strong>#tcpdump -i wlan0 'tcp[13] ==2'</strong></pre>
+<p>tcp[13] lo podemos reemplazar con tcp[tcpflags]. Los posibles valores serian :</p>
+<ul>
+<li><strong>tcp-fin</strong></li>
+<li><strong>tcp-syn</strong></li>
+<li><strong> tcp-rst</strong></li>
+<li><strong>tcp-push</strong></li>
+<li><strong> tcp-act</strong></li>
+<li><strong> tcp-urg</strong></li>
+</ul>
+<p>Con lo que podemos expresarlo como&nbsp; :</p>
+<pre><strong>#tcpdump ‘tcp[tcpflags] &amp; (tcp-syn) != 0)</strong></pre>
+<p>Mostrar paquetes de inicio y fin (SYN y FIN activados) que no pertenezcan a una determinada red:</p>
+<pre><strong>#tcpdump 'tcp[tcpflags] &amp; (tcp-syn|tcp-fin) != 0 and not src and dst net 10.204.X.X'</strong></pre>
+<p><strong></strong>Siguiendo el mismo razonamiento si queremos que filtrar paquetes SYN y ACK, entonces <strong>tcp[13] == 18</strong></p>
+<p>Si queremos recoger únicamente paquetes con SYN o SYN+ACK entonces aplicamos máscaras:</p>
+<pre>00010010:SYN-ACK + 00000010:Mascara (2 en decimal) = 00000010 : Resultado(2 en decimal)
+<strong>#tcpdump -i wlan0 'tcp[13] &amp; 2 = 2'</strong></pre>
+<p>También podríamos filtrar los paquetes lanzados contra un determinado puerto :</p>
+<pre><strong>proto[x:y]</strong> <strong>x</strong>=byte inicio e <strong>y</strong> numero de bytes a recoger.
+<strong>#tcpdump -i wlan0 'tcp[0:2] =81'</strong></pre>
+<p>Ademas podemos utilizar los siguientes operadores:</p>
+<pre><strong>Operators : &gt;, &lt;, &gt;=, &lt;=, =, !=</strong></pre>
+<p><strong></strong>Pudiendo transformar el filtro anterior:</p>
+<pre><strong>#tcpdump -i wlan0 'tcp[0:2] &gt;21 &amp;&amp; tcp[0:2] &lt; 25'</strong>'</pre>
+<p>Con lo visto podemos jugar con otros protocolos como <a href="https://tools.ietf.org/html/rfc792" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;https://tools.ietf.org/html/rfc792&#39;, &#39;ICMP&#39;);" title="ICMP" target="_blank">ICMP</a>.</p>
+<pre>    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |     Type      |     Code      |          Checksum             |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                             unused                            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |      Internet Header + 64 bits of Original Data Datagram      |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</pre>
+<ul>
+<li><strong>0 Echo Reply </strong></li>
+<li><strong>3 Destination Unreachable </strong></li>
+<li><strong>4 Source Quench </strong></li>
+<li><strong>5 Redirect </strong></li>
+<li><strong>8 Echo </strong></li>
+<li><strong>11 Time Exceeded </strong></li>
+<li><strong>12 Parameter Problem </strong></li>
+<li><strong>13 Timestamp </strong></li>
+<li><strong>14 Timestamp Reply </strong></li>
+<li><strong>15 Information Request </strong></li>
+<li><strong>16 Information Reply</strong></li>
+</ul>
+<p>Por ejemplo filtrar un Echo Request:</p>
+<pre><strong>#tcpdump -i wlan0 'icmp[0]=8'</strong></pre>
+<p>Podemos obtener las IP que nos estan haciendo escaneos…</p>
+<pre><strong>#tcpdump -lni wlan0 'icmp and (icmp[0] = 8)' | tee salida.txt </strong><strong>#cut -d " " -f 3 salida.txt</strong></pre>
+<p>Con lo visto en este articulillo creo que tenemos una visión detallada del alcance y la potencia de esta pequeña gran herramienta.</p>
+<p>Sed buenos y hasta la próxima compañeros!!.</p>
+
+<div class="jwsharethis">
+Enviar a un amigo: 
+<a href="mailto:?subject=Tcpdump%20avanzado%3A%20El%20arte%20de%20capturar%20y%20analizar%20el%20tr%C3%A1fico%20de%20red.&amp;body=http%3A%2F%2Fblog.iurlek.com%2F2011%2F10%2Ftcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red%2F">
+<img src="./TCPDUMP_FILTERS_files/email.png" alt="Share this page via Email">
+</a>
+</div>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Comparte esto:</h3><div class="sd-content"><ul><li><a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#" class="sharing-anchor sd-button share-more"><span>Compartir</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none; width: 150px;"><ul style="background-image:none;"><li class="share-email share-service-visible"><a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/?share=email&amp;nb=1" onclick="__gaTracker(&#39;send&#39;, &#39;event&#39;, &#39;outbound-article&#39;, &#39;http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/?share=email&#39;, &#39;Correo electrónico&#39;);" rel="nofollow" data-shared="" class="share-email sd-button share-icon" target="_blank" title="Haz clic para enviar por correo electrónico a un amigo"><span>Correo electrónico</span></a></li><li class="share-end"></li></ul></div></div></div></div></div>			<div class="fixed"></div>
+		</div>
+		<div class="under">
+			<span class="categories">Categories: </span><span><a href="http://blog.iurlek.com/category/linux/" rel="category tag">Linux</a>, <a href="http://blog.iurlek.com/category/seguridad/" rel="category tag">Seguridad</a>, <a href="http://blog.iurlek.com/category/seguridad/scanner/tcpdump/" rel="category tag">tcpdump</a></span>			<span class="tags">Tags: </span><span></span>		</div>
+	</div>
+
+	<!-- related posts START -->
+		<!-- related posts END -->
+
+	<script type="text/javascript" src="./TCPDUMP_FILTERS_files/comment.js"></script>
+
+
+
+<div id="comments">
+
+<div id="cmtswitcher">
+			<a id="commenttab" class="curtab" href="javascript:void(0);" onclick="MGJS.switchTab(&#39;thecomments,commentnavi&#39;, &#39;thetrackbacks&#39;, &#39;commenttab&#39;, &#39;curtab&#39;, &#39;trackbacktab&#39;, &#39;tab&#39;);">Comentarios (6)</a>
+		<a id="trackbacktab" class="tab" href="javascript:void(0);" onclick="MGJS.switchTab(&#39;thetrackbacks&#39;, &#39;thecomments,commentnavi&#39;, &#39;trackbacktab&#39;, &#39;curtab&#39;, &#39;commenttab&#39;, &#39;tab&#39;);">Referencias (3)</a>
+				<span class="addcomment"><a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#respond">Dejar un comentario</a></span>
+				<span class="addtrackback"><a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/trackback/">Referencia</a></span>
+		<div class="fixed"></div>
+</div>
+
+<div id="commentlist">
+	<!-- comments START -->
+	<ol id="thecomments">
+		<li class="comment regularcomment" id="comment-4727">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="./TCPDUMP_FILTERS_files/e4578687c4a01c442526828e529f633b" srcset="http://2.gravatar.com/avatar/e4578687c4a01c442526828e529f633b?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32" id="grav-e4578687c4a01c442526828e529f633b-0">			</div>
+			<div class="name">
+									<span id="commentauthor-4727">
+				
+				ait
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				Jueves, 6 de Octubre de 2011 a las 17:53					 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-4727">#1</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-4727&#39;, &#39;comment-4727&#39;, &#39;comment&#39;);">Responder</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-4727&#39;, &#39;comment-4727&#39;, &#39;commentbody-4727&#39;, &#39;comment&#39;);">Citar</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-4727">
+					<p>¿Te dan algún premio si te lo lees todo?</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-4729">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="./TCPDUMP_FILTERS_files/9b2fe09fefc55922b1d4eb456c756847" srcset="http://0.gravatar.com/avatar/9b2fe09fefc55922b1d4eb456c756847?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32" id="grav-9b2fe09fefc55922b1d4eb456c756847-0">			</div>
+			<div class="name">
+									<a id="commentauthor-4729" class="url" href="http://blog.iurlek.com/" rel="external nofollow">
+				
+				pedimave
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				Jueves, 6 de Octubre de 2011 a las 20:41					 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-4729">#2</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-4729&#39;, &#39;comment-4729&#39;, &#39;comment&#39;);">Responder</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-4729&#39;, &#39;comment-4729&#39;, &#39;commentbody-4729&#39;, &#39;comment&#39;);">Citar</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-4729">
+					<p>Ja,ja. Si, y un diploma. Yo creo que le tendrían que dar un premio al que lo escribe, aunque sea por pesado.</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-4940">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="./TCPDUMP_FILTERS_files/7764ca145cb9377efccf68414c926bf0" srcset="http://1.gravatar.com/avatar/7764ca145cb9377efccf68414c926bf0?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32" id="grav-7764ca145cb9377efccf68414c926bf0-0">			</div>
+			<div class="name">
+									<span id="commentauthor-4940">
+				
+				ceragus
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				Viernes, 16 de Marzo de 2012 a las 14:43					 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-4940">#3</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-4940&#39;, &#39;comment-4940&#39;, &#39;comment&#39;);">Responder</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-4940&#39;, &#39;comment-4940&#39;, &#39;commentbody-4940&#39;, &#39;comment&#39;);">Citar</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-4940">
+					<p>Muy buen articulillo como dice Iurlek, me sirvio bastante.<br>
+Todo bien explicado y con ejemplos didacticos.<br>
+Gracias… seguiré investigando ….</p>
+<p>No hay que hacer caso a los que no entienden nada y se pone a leer.</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment admincomment" id="comment-4941">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="./TCPDUMP_FILTERS_files/9b2fe09fefc55922b1d4eb456c756847" srcset="http://0.gravatar.com/avatar/9b2fe09fefc55922b1d4eb456c756847?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32" id="grav-9b2fe09fefc55922b1d4eb456c756847-1">			</div>
+			<div class="name">
+									<a id="commentauthor-4941" class="url" href="http://blog.iurlek.com/" rel="external nofollow">
+				
+				pedimave
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				Martes, 20 de Marzo de 2012 a las 19:43					 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-4941">#4</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-4941&#39;, &#39;comment-4941&#39;, &#39;comment&#39;);">Responder</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-4941&#39;, &#39;comment-4941&#39;, &#39;commentbody-4941&#39;, &#39;comment&#39;);">Citar</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-4941">
+					<p>Merci. Mientras el cuerpo aguante seguiremos publicando.</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-16401">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="./TCPDUMP_FILTERS_files/1e2f2091afe35088cbbd987964dd10a6" srcset="http://1.gravatar.com/avatar/1e2f2091afe35088cbbd987964dd10a6?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32" id="grav-1e2f2091afe35088cbbd987964dd10a6-0">			</div>
+			<div class="name">
+									<span id="commentauthor-16401">
+				
+				kroket
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				Domingo, 20 de Octubre de 2013 a las 20:09					 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-16401">#5</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-16401&#39;, &#39;comment-16401&#39;, &#39;comment&#39;);">Responder</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-16401&#39;, &#39;comment-16401&#39;, &#39;commentbody-16401&#39;, &#39;comment&#39;);">Citar</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-16401">
+					<p>Hola, ¿sabes si se podria lanzar a la vez sobre varias interfaces? por ejemplo, vamos a recibir un trafico pero no sabemos sobre que interfaz llegara…</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-22607">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="./TCPDUMP_FILTERS_files/b4799f09ab91b647415cbbfbf88fb74e" srcset="http://2.gravatar.com/avatar/b4799f09ab91b647415cbbfbf88fb74e?s=64&amp;d=mm&amp;r=g 2x" class="avatar avatar-32 photo grav-hashed grav-hijack" height="32" width="32" id="grav-b4799f09ab91b647415cbbfbf88fb74e-0">			</div>
+			<div class="name">
+									<a id="commentauthor-22607" class="url" href="http://zaider.com.ar/" rel="external nofollow">
+				
+				Wintch
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				Martes, 8 de Abril de 2014 a las 00:59					 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-22607">#6</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-22607&#39;, &#39;comment-22607&#39;, &#39;comment&#39;);">Responder</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-22607&#39;, &#39;comment-22607&#39;, &#39;commentbody-22607&#39;, &#39;comment&#39;);">Citar</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-22607">
+					<p>Muy buenos los ejemplos! Va a favoritos <img draggable="false" class="emoji" alt="🙂" src="./TCPDUMP_FILTERS_files/1f642.svg"></p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	</ol>
+	<!-- comments END -->
+
+
+	<!-- trackbacks START -->
+			<ol id="thetrackbacks">
+												<li class="trackback">
+						<div class="date">
+							Domingo, 2 de Octubre de 2011 a las 04:27							 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-4725">#1</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.supaginawebgratis.com.ar/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-red/">
+								Tcpdump avanzado: El arte de capturar y analizar el tráfico de red. | PÁGINA WEB GRATIS y DISEÑO WEB GRATIS							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							Lunes, 5 de Agosto de 2013 a las 19:18							 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-15142">#2</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://dennisvargas.tk/2013/08/opciones-de-internet-regedit-tcp-dump/">
+								Dennis V. | Opciones de Internet, Regedit &amp; TCP-Dump							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							Jueves, 30 de Enero de 2014 a las 22:35							 | <a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#comment-20314">#3</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://dennisvargas.tk/2014/01/comandos-utiles-tcpdump/">
+								Dennis V. | Comandos útiles TCPDump							</a>
+						</div>
+					</li>
+				
+					</ol>
+		<div class="fixed"></div>
+	<!-- trackbacks END -->
+</div>
+
+</div>
+
+	<form action="http://blog.iurlek.com/wp-comments-post.php" method="post" id="commentform">
+	<div id="respond">
+
+					
+			<div id="author_info">
+				<div class="row">
+					<input type="text" name="author" id="author" class="textfield" value="" size="24" tabindex="1">
+					<label for="author" class="small">Nombre (requerido)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="email" id="email" class="textfield" value="" size="24" tabindex="2">
+					<label for="email" class="small">e-Mail (no será publicado) (requerido)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="url" id="url" class="textfield" value="" size="24" tabindex="3">
+					<label for="url" class="small">Sitio web</label>
+				</div>
+			</div>
+
+			
+		
+		<!-- comment input -->
+		<div class="row">
+			<textarea name="comment" id="comment" tabindex="4" rows="8" cols="50"></textarea>
+		<div id="captchaImgDiv">
+
+<div class="si_captcha_small"><img id="si_image_com" src="./TCPDUMP_FILTERS_files/securimage_show.php" width="132" height="45" alt="CAPTCHA" title="CAPTCHA">
+    <input id="si_code_com" name="si_code_com" type="hidden" value="iVvQOebqAgcTsRuo">
+    <div id="si_refresh_com">
+<a href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#" rel="nofollow" title="Refresh" onclick="si_captcha_refresh(&#39;si_image_com&#39;,&#39;com&#39;,&#39;/wp-content/plugins/si-captcha-for-wordpress/captcha&#39;,&#39;http://blog.iurlek.com/wp-content/plugins/si-captcha-for-wordpress/captcha/securimage_show.php?si_sm_captcha=1&amp;si_form_id=com&amp;prefix=&#39;); return false;">
+      <img class="si_captcha_refresh" src="./TCPDUMP_FILTERS_files/refresh.png" width="22" height="20" alt="Refresh" onclick="this.blur();"></a>
+  </div>
+  </div>
+
+<p id="si_captcha_code">
+<input id="si_captcha_code" name="si_captcha_code" type="text">
+<label for="si_captcha_code">Código CAPTCHA</label><span class="required"> *</span>
+</p>
+</div></div>
+
+		<!-- comment submit and rss -->
+		<div id="submitbox">
+			<a class="feed" href="http://blog.iurlek.com/comments/feed/">Suscribirse a los comentarios</a>
+			<div class="submitbutton">
+				<input name="submit" type="submit" id="submit" class="button" tabindex="5" value="Publicar comentario">
+			</div>
+						<input type="hidden" name="comment_post_ID" value="544">
+			<div class="fixed"></div>
+		</div>
+
+	</div>
+	<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2bbf60eeee"></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Recibir un email con los siguientes comentarios a esta entrada.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Recibir un email con cada nueva entrada.</label></p><p style="display: none;"></p>
+
+      <script type="text/javascript">
+          var sUrlInput = document.getElementById("comment");
+                  var oParent = sUrlInput.parentNode;
+          var sSubstitue = document.getElementById("captchaImgDiv");
+                  oParent.appendChild(sSubstitue, sUrlInput);
+      </script>
+            <noscript>
+          &lt;style type='text/css'&gt;#submit {display:none;}&lt;/style&gt;&lt;br /&gt;           &lt;input name="submit" type="submit" id="submit-alt" tabindex="6" value="Enviar comentario" /&gt;
+          </noscript>
+  	<input type="hidden" id="ak_js" name="ak_js" value="1489739179692"></form>
+
+	
+
+	<div id="postnavi">
+		<span class="prev"><a href="http://blog.iurlek.com/2011/10/retorno-a-la-fotografia/" rel="next">Retorno a la fotografía</a></span>
+		<span class="next"><a href="http://blog.iurlek.com/2011/07/nmap-avanzado-el-arte-de-escanear/" rel="prev">Nmap Avanzado: El arte de escanear.</a></span>
+		<div class="fixed"></div>
+	</div>
+
+
+	</div>
+	<!-- main END -->
+
+	
+<!-- sidebar START -->
+<div id="sidebar">
+
+<!-- sidebar north START -->
+<div id="northsidebar" class="sidebar">
+
+	<!-- feeds -->
+	<div class="widget widget_feeds">
+		<div class="content">
+			<div id="subscribe"><a rel="external nofollow" id="feedrss" title="Suscribirse a este blog..." href="http://blog.iurlek.com/feed/"><abbr title="Really Simple Syndication">RSS</abbr></a></div>
+						<div class="fixed"></div>
+		</div>
+	</div>
+
+	<!-- showcase -->
+	
+<div id="tag_cloud-3" class="widget widget_tag_cloud"><h3>Etiquetas</h3><div class="tagcloud"><a href="http://blog.iurlek.com/tag/administracion/" class="tag-link-17 tag-link-position-1" title="2 temas" style="font-size: 10.964705882353pt;">Administracion</a>
+<a href="http://blog.iurlek.com/tag/arp-spofing/" class="tag-link-22 tag-link-position-2" title="1 tema" style="font-size: 8pt;">arp spofing</a>
+<a href="http://blog.iurlek.com/tag/auditoria/" class="tag-link-36 tag-link-position-3" title="1 tema" style="font-size: 8pt;">auditoria</a>
+<a href="http://blog.iurlek.com/tag/cifrado/" class="tag-link-96 tag-link-position-4" title="2 temas" style="font-size: 10.964705882353pt;">cifrado</a>
+<a href="http://blog.iurlek.com/tag/cisco/" class="tag-link-25 tag-link-position-5" title="2 temas" style="font-size: 10.964705882353pt;">cisco</a>
+<a href="http://blog.iurlek.com/tag/citas/" class="tag-link-89 tag-link-position-6" title="4 temas" style="font-size: 14.588235294118pt;">Citas</a>
+<a href="http://blog.iurlek.com/tag/contrasenas/" class="tag-link-48 tag-link-position-7" title="1 tema" style="font-size: 8pt;">contraseñas</a>
+<a href="http://blog.iurlek.com/tag/dell/" class="tag-link-60 tag-link-position-8" title="1 tema" style="font-size: 8pt;">Dell</a>
+<a href="http://blog.iurlek.com/tag/disco/" class="tag-link-53 tag-link-position-9" title="1 tema" style="font-size: 8pt;">Disco</a>
+<a href="http://blog.iurlek.com/tag/epoca/" class="tag-link-44 tag-link-position-10" title="2 temas" style="font-size: 10.964705882353pt;">epoca</a>
+<a href="http://blog.iurlek.com/tag/ficheros/" class="tag-link-51 tag-link-position-11" title="1 tema" style="font-size: 8pt;">ficheros</a>
+<a href="http://blog.iurlek.com/tag/forensic/" class="tag-link-18 tag-link-position-12" title="1 tema" style="font-size: 8pt;">forensic</a>
+<a href="http://blog.iurlek.com/tag/fotografia/" class="tag-link-42 tag-link-position-13" title="2 temas" style="font-size: 10.964705882353pt;">fotografia</a>
+<a href="http://blog.iurlek.com/tag/herramientas/" class="tag-link-92 tag-link-position-14" title="4 temas" style="font-size: 14.588235294118pt;">Herramientas</a>
+<a href="http://blog.iurlek.com/tag/homer-simpson/" class="tag-link-45 tag-link-position-15" title="1 tema" style="font-size: 8pt;">Homer Simpson</a>
+<a href="http://blog.iurlek.com/tag/imagenes/" class="tag-link-43 tag-link-position-16" title="2 temas" style="font-size: 10.964705882353pt;">imagenes</a>
+<a href="http://blog.iurlek.com/tag/inalambricas/" class="tag-link-5 tag-link-position-17" title="1 tema" style="font-size: 8pt;">Inalambricas</a>
+<a href="http://blog.iurlek.com/tag/ios/" class="tag-link-27 tag-link-position-18" title="1 tema" style="font-size: 8pt;">ios</a>
+<a href="http://blog.iurlek.com/tag/ipw2200red/" class="tag-link-6 tag-link-position-19" title="1 tema" style="font-size: 8pt;">ipw2200.red</a>
+<a href="http://blog.iurlek.com/tag/linux/" class="tag-link-88 tag-link-position-20" title="7 temas" style="font-size: 17.882352941176pt;">Linux</a>
+<a href="http://blog.iurlek.com/tag/linux-seguridad/" class="tag-link-21 tag-link-position-21" title="1 tema" style="font-size: 8pt;">linux. seguridad</a>
+<a href="http://blog.iurlek.com/tag/livecd/" class="tag-link-35 tag-link-position-22" title="1 tema" style="font-size: 8pt;">liveCD</a>
+<a href="http://blog.iurlek.com/tag/losf/" class="tag-link-50 tag-link-position-23" title="1 tema" style="font-size: 8pt;">Losf</a>
+<a href="http://blog.iurlek.com/tag/lvm/" class="tag-link-52 tag-link-position-24" title="1 tema" style="font-size: 8pt;">LVM</a>
+<a href="http://blog.iurlek.com/tag/man-in-the-middle/" class="tag-link-23 tag-link-position-25" title="1 tema" style="font-size: 8pt;">man in the middle</a>
+<a href="http://blog.iurlek.com/tag/monitorizacion/" class="tag-link-99 tag-link-position-26" title="1 tema" style="font-size: 8pt;">monitorizacion</a>
+<a href="http://blog.iurlek.com/tag/mp3/" class="tag-link-33 tag-link-position-27" title="1 tema" style="font-size: 8pt;">mp3</a>
+<a href="http://blog.iurlek.com/tag/musica/" class="tag-link-32 tag-link-position-28" title="1 tema" style="font-size: 8pt;">musica</a>
+<a href="http://blog.iurlek.com/tag/nagios/" class="tag-link-57 tag-link-position-29" title="1 tema" style="font-size: 8pt;">nagios</a>
+<a href="http://blog.iurlek.com/tag/openssh/" class="tag-link-40 tag-link-position-30" title="1 tema" style="font-size: 8pt;">openssh</a>
+<a href="http://blog.iurlek.com/tag/password/" class="tag-link-49 tag-link-position-31" title="2 temas" style="font-size: 10.964705882353pt;">password</a>
+<a href="http://blog.iurlek.com/tag/protocolo/" class="tag-link-55 tag-link-position-32" title="1 tema" style="font-size: 8pt;">protocolo</a>
+<a href="http://blog.iurlek.com/tag/radio/" class="tag-link-34 tag-link-position-33" title="1 tema" style="font-size: 8pt;">radio</a>
+<a href="http://blog.iurlek.com/tag/refranes/" class="tag-link-41 tag-link-position-34" title="1 tema" style="font-size: 8pt;">refranes</a>
+<a href="http://blog.iurlek.com/tag/routers/" class="tag-link-26 tag-link-position-35" title="1 tema" style="font-size: 8pt;">routers</a>
+<a href="http://blog.iurlek.com/tag/seguridad/" class="tag-link-90 tag-link-position-36" title="13 temas" style="font-size: 22pt;">Seguridad</a>
+<a href="http://blog.iurlek.com/tag/sniffer/" class="tag-link-93 tag-link-position-37" title="1 tema" style="font-size: 8pt;">Sniffer</a>
+<a href="http://blog.iurlek.com/tag/snmp/" class="tag-link-56 tag-link-position-38" title="1 tema" style="font-size: 8pt;">snmp</a>
+<a href="http://blog.iurlek.com/tag/software/" class="tag-link-31 tag-link-position-39" title="1 tema" style="font-size: 8pt;">software</a>
+<a href="http://blog.iurlek.com/tag/ssh/" class="tag-link-39 tag-link-position-40" title="1 tema" style="font-size: 8pt;">ssh</a>
+<a href="http://blog.iurlek.com/tag/touchpad/" class="tag-link-61 tag-link-position-41" title="1 tema" style="font-size: 8pt;">touchpad</a>
+<a href="http://blog.iurlek.com/tag/url/" class="tag-link-46 tag-link-position-42" title="1 tema" style="font-size: 8pt;">url</a>
+<a href="http://blog.iurlek.com/tag/vulnerabilidades/" class="tag-link-15 tag-link-position-43" title="1 tema" style="font-size: 8pt;">vulnerabilidades</a>
+<a href="http://blog.iurlek.com/tag/windows/" class="tag-link-14 tag-link-position-44" title="5 temas" style="font-size: 15.905882352941pt;">windows</a>
+<a href="http://blog.iurlek.com/tag/zyxell/" class="tag-link-54 tag-link-position-45" title="1 tema" style="font-size: 8pt;">Zyxell</a></div>
+</div></div>
+<!-- sidebar north END -->
+
+<div id="centersidebar">
+
+	<!-- sidebar east START -->
+	<div id="eastsidebar" class="sidebar">
+	
+		<!-- categories -->
+		<div class="widget widget_categories">
+			<h3>Categories</h3>
+			<ul>
+					<li class="cat-item cat-item-70"><a href="http://blog.iurlek.com/category/apple/">Apple</a>
+</li>
+	<li class="cat-item cat-item-86"><a href="http://blog.iurlek.com/category/certificaciones/">Certificaciones</a>
+</li>
+	<li class="cat-item cat-item-94"><a href="http://blog.iurlek.com/category/cisco/">cisco</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://blog.iurlek.com/category/citas/" title="Citas que nos han marcado">Citas</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://blog.iurlek.com/category/fotografia/">fotografia</a>
+</li>
+	<li class="cat-item cat-item-101"><a href="http://blog.iurlek.com/category/ideas-inovadoras/">Ideas Inovadoras</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blog.iurlek.com/category/linux/" title="A mi fiel amigo el pinguino">Linux</a>
+</li>
+	<li class="cat-item cat-item-58"><a href="http://blog.iurlek.com/category/monitorizacion/" title="Monitorización de Sistemas">monitorizacion</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://blog.iurlek.com/category/musica/" title="Musica">musica</a>
+</li>
+	<li class="cat-item cat-item-73"><a href="http://blog.iurlek.com/category/navegadores/">Navegadores</a>
+</li>
+	<li class="cat-item cat-item-85"><a href="http://blog.iurlek.com/category/navidad/">Navidad</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blog.iurlek.com/category/presentacion/" title="Presentación">Presentación</a>
+</li>
+	<li class="cat-item cat-item-68"><a href="http://blog.iurlek.com/category/programacion/" title="Lenguajes de programación">Programación</a>
+</li>
+	<li class="cat-item cat-item-91"><a href="http://blog.iurlek.com/category/seguridad/" title="Todo lo referente a la seguridad">Seguridad</a>
+</li>
+	<li class="cat-item cat-item-100"><a href="http://blog.iurlek.com/category/voluntechies/">Voluntechies</a>
+</li>
+			</ul>
+		</div>
+
+		</div>
+	<!-- sidebar east END -->
+
+	<!-- sidebar west START -->
+	<div id="westsidebar" class="sidebar">
+	
+		<!-- blogroll -->
+		<div class="widget widget_links">
+			<h3>Blogroll</h3>
+			<ul>
+				<li><a href="http://elladodelmal.blogspot.com/" title="Seguridad ">Chema Alonso</a></li>
+<li><a href="http://conexioninversa.blogspot.com/">ConexionInversa</a></li>
+<li><a href="http://www.securitybydefault.com/" target="_blank">SecurityByDefault</a></li>
+			</ul>
+		</div>
+
+		</div>
+	<!-- sidebar west END -->
+	<div class="fixed"></div>
+</div>
+
+<!-- sidebar south START -->
+<div id="southsidebar" class="sidebar">
+		<div id="recent-posts-2" class="widget widget_recent_entries">		<h3>Recientes</h3>		<ul>
+					<li>
+				<a href="http://blog.iurlek.com/2017/02/inteligencia-artificial-aplicada-a-los-procesos-de-la-empresa/">Inteligencia Artificial Aplicada a los procesos de la empresa</a>
+						</li>
+					<li>
+				<a href="http://blog.iurlek.com/2017/02/dia-internacional-del-cancer-infantil/">Día Internacional del Cáncer Infantil</a>
+						</li>
+					<li>
+				<a href="http://blog.iurlek.com/2017/02/sistemas-de-climatizacion-inteligentes-office-4-0/">Sistemas de Climatización Inteligentes: OFFICE 4.0</a>
+						</li>
+					<li>
+				<a href="http://blog.iurlek.com/2017/02/la-revolucion-de-las-calderas-diseno-personalizacion/">La revolución de las Calderas: Diseño + Personalización</a>
+						</li>
+					<li>
+				<a href="http://blog.iurlek.com/2017/01/industria-4-0-caminando-hacia-la-digitalizacion/">INDUSTRIA 4.0: Caminando hacia la Digitalización</a>
+						</li>
+				</ul>
+		</div>		<div id="text-1" class="widget widget_text">			<div class="textwidget"></div>
+		</div></div>
+<!-- sidebar south END -->
+
+</div>
+<!-- sidebar END -->
+	<div class="fixed"></div>
+</div>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer">
+	<a id="gotop" href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#" onclick="MGJS.goTop();return false;">Arriba</a>
+	<a id="powered" href="http://wordpress.org/">WordPress</a>
+	<div id="copyright">
+		Copyright © 2008-2017 Iurlek – Igor Urraza	</div>
+	<div id="themeinfo">
+		Tema por <a href="http://www.neoease.com/">NeoEase</a>. Valido <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> y <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">CSS 3</a>.	</div>
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+</div>
+<!-- wrap END -->
+
+<!-- AdSense Manager v4.0.3 (1,601 seconds.) -->	<div style="display:none">
+	<div class="grofile-hash-map-e4578687c4a01c442526828e529f633b">
+	</div>
+	<div class="grofile-hash-map-9b2fe09fefc55922b1d4eb456c756847">
+	</div>
+	<div class="grofile-hash-map-7764ca145cb9377efccf68414c926bf0">
+	</div>
+	<div class="grofile-hash-map-1e2f2091afe35088cbbd987964dd10a6">
+	</div>
+	<div class="grofile-hash-map-b4799f09ab91b647415cbbfbf88fb74e">
+	</div>
+	</div>
+	
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/form.js"></script>
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='jetpack-carousel-ie8fix-css'  href='http://blog.iurlek.com/wp-content/plugins/jetpack/modules/carousel/jetpack-carousel-ie8fix.css?ver=20121024' type='text/css' media='all' />
+<![endif]-->
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/devicepx-jetpack.js"></script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/wpgroho.js"></script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/wp-embed.min.js"></script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/spin.js"></script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/jquery.spin.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"es","ajaxurl":"http:\/\/blog.iurlek.com\/wp-admin\/admin-ajax.php","nonce":"96bace1d1c","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comentario","post_comment":"Publicar comentario","write_comment":"Escribir un Comentario...","loading_comments":"Cargando comentarios...","download_original":"Ver tama\u00f1o completo <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Por favor, aseg\u00farate de enviar el texto con tu comentario.","no_comment_email":"Por favor, proporciona una direcci\u00f3n de correo electr\u00f3nico para comentar.","no_comment_author":"Por favor, a\u00f1ade tu nombre al comentario.","comment_post_error":"Lo sentimos, pero hubo un error al publicar tu comentario. Por favor, vuelve a intentarlo m\u00e1s tarde.","comment_approved":"Se aprob\u00f3 tu comentario.","comment_unapproved":"Tu comentario est\u00e1 en moderaci\u00f3n.","camera":"C\u00e1mara","aperture":"Abertura","shutter_speed":"Velocidad de obturaci\u00f3n","focal_length":"Longitud focal","copyright":"Derechos","comment_registration":"0","require_name_email":"1","login_url":"http:\/\/blog.iurlek.com\/wp-login.php?redirect_to=http%3A%2F%2Fblog.iurlek.com%2F2011%2F10%2Ftcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red%2F","blog_id":"1","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Correo electr\u00f3nico (Obligatorio)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Nombre (Obligatorio)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Web<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/jetpack-carousel.js"></script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/si_captcha(1).js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/sharing.js"></script>
+<script type="text/javascript" src="./TCPDUMP_FILTERS_files/e-201711.js" async="" defer=""></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:4.7.1',blog:'6802329',post:'544',tz:'1',srv:'blog.iurlek.com'} ]);
+	_stq.push([ 'clickTrackerInit', '6802329', '544' ]);
+</script>
+
+
+
+
+<div id="sharing_email" style="display: none;">
+		<form action="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/" method="post">
+			<label for="target_email">Enviar a dirección de correo electrónico</label>
+			<input type="email" name="target_email" id="target_email" value="">
+
+			
+				<label for="source_name">Su Nombre</label>
+				<input type="text" name="source_name" id="source_name" value="">
+
+				<label for="source_email">Tu dirección de correo electrónico</label>
+				<input type="email" name="source_email" id="source_email" value="">
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" title="Este campo sirve de validación y no debería cambiarse">
+			<script>jQuery( document ).ready( function(){ document.getElementById('jetpack-source_f_name').value = '' });</script>
+			
+			<img style="float: right; display: none" class="loading" src="./TCPDUMP_FILTERS_files/loading.gif" alt="loading" width="16" height="16">
+			<input type="submit" value="Enviar correo electrónico" class="sharing_send">
+			<a rel="nofollow" href="http://blog.iurlek.com/2011/10/tcpdump-avanzado-el-arte-de-capturar-y-analizar-el-trafico-de-la-red/#cancel" class="sharing_cancel">Cancelar</a>
+
+			<div class="errors errors-1" style="display: none;">
+				La entrada no fue enviada. ¡Comprueba tus direcciones de correo electrónico!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Error en la comprobación de email. Por favor, vuelve a intentarlo			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Lo sentimos, tu blog no puede compartir entradas por correo electrónico.			</div>
+		</form>
+	</div><img src="./TCPDUMP_FILTERS_files/g.gif" alt=":)" width="6" height="5" id="wpstats"></body></html>

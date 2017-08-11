@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="41px" viewBox="0 0 33 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>use_cases_48</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="fisher" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Enterprise-Edition@2x" transform="translate(-866.000000, -4754.000000)" fill="#445D6E">
+            <g id="use_cases_48" transform="translate(866.000000, 4754.000000)">
+                <g id="use-cases">
+                    <g id="Group">
+                        <path d="M5.443,17.63 L15.33,17.63 L15.33,6.535 L5.443,6.535 L5.443,17.63 L5.443,17.63 Z M4.943,6.034 L15.83,6.034 L15.83,18.13 L4.943,18.13 L4.943,6.034 L4.943,6.034 Z" id="Shape"></path>
+                        <circle id="Oval" cx="10.387" cy="12.082" r="2.419"></circle>
+                        <path d="M4.943,22.97 L14.621,22.97 L14.621,24.18 L4.943,24.18 L4.943,22.97 Z M4.943,32.648 L14.621,32.648 L14.621,33.858 L4.943,33.858 L4.943,32.648 Z M4.943,25.389 L27.723,25.389 L27.723,26.599 L4.943,26.599 L4.943,25.389 Z M4.943,27.809 L27.723,27.809 L27.723,29.019 L4.943,29.019 L4.943,27.809 Z M4.943,30.228 L27.723,30.228 L27.723,31.438 L4.943,31.438 L4.943,30.228 Z" id="Shape"></path>
+                        <path d="M31.112,6.34 L25.012,1.2 L1.823,1.2 L1.823,39.791 L31.113,39.791 L31.113,6.341 L31.112,6.34 Z M32.112,40.791 L0.822,40.791 L0.822,0.201 L25.378,0.201 L32.112,5.876 L32.112,40.79 L32.112,40.791 Z" id="Shape"></path>
+                        <polygon id="Shape" points="31.387 6.424 25 6.424 25 1"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,25 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+#Interface for the host-only network 
+auto eth2
+iface eth2 inet static
+	address 192.168.5.1
+	netmask 255.255.255.0
+#auto eth1
+#Interface in the internal network w the Services Machine
+#iface eth1 inet static
+#	address 172.30.5.20
+#	netmask 255.255.255.0
+#Interface in the internal network with the client machine (if needed)
+auto eth0
+iface eth0 inet static
+	address 192.168.6.20
+	metmask 255.255.255.0
+NAT or bridged interface 
+auto eth1
+iface eth1 inet dhcp

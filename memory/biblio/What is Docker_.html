@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://www.docker.com/what-docker -->
+<html class="no-js js fa-events-icons-ready is_not_retina" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style><script type="text/javascript" src="./What is Docker__files/f419820c87"></script><script src="./What is Docker__files/nr-1044.min.js"></script><script type="text/javascript" async="" src="./What is Docker__files/munchkin.js"></script><script type="text/javascript" async="" src="./What is Docker__files/munchkin(1).js"></script><script type="text/javascript" async="" src="./What is Docker__files/insight.min.js"></script><script type="text/javascript" async="" src="./What is Docker__files/gtm.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="./What is Docker__files/identity.js" async=""></script><script src="./What is Docker__files/1646638862321038" async=""></script><script type="text/javascript" async="" src="./What is Docker__files/fbevents.js"></script><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion_async.js"></script><script type="text/javascript" async="" src="https://s.adroll.com/j/roundtrip.js"></script><script async="" src="./What is Docker__files/gtm(1).js"></script><script type="text/javascript" async="" src="./What is Docker__files/ei.js"></script>
+	<script type="text/javascript" async="" src="./What is Docker__files/analytics.min.js"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(2),u=e(3),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}finally{f.emit("fn-end",[c.now()],t)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now()])}},{}],2:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],3:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],4:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=m(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){v[e]=m(e).concat(n)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(t)}function g(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var v={},y={},b={on:l,emit:t,get:w,listeners:m,context:n,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(2),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=h.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+h.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===d.readyState&&i()}function i(){f("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),f=e("handle"),c=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1044.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=n.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),f("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+<meta name="description" content="The Docker platform leverages Docker containers to enable IT operations teams and Developement teams to build, ship and run any application, anywhere.">
+<meta name="abstract" content="The Docker platform leverages Docker containers to enable IT operations teams and Developer teams to build, ship and run any application, anywhere">
+<meta name="keywords" content="what is docker, docker container, docker linux, linux docker, docker getting started, docker technology, docker vm, docker virtualization, docker explained, what is a docker container, docker how to, docker quickstart, how to docker">
+<link rel="canonical" href="https://www.docker.com/what-docker">
+<link rel="shortlink" href="https://www.docker.com/node/3">
+<meta property="og:site_name" content="Docker">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.docker.com/what-docker">
+<meta property="og:title" content="What is Docker">
+<meta property="og:description" content="Docker is an open platform to build, ship and run distributed applications anywhere.">
+<meta property="og:updated_time" content="2017-06-08T09:09:30-07:00">
+<meta property="og:image" content="https://www.docker.com/sites/default/files/social/docker-facebook-share.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@docker">
+<meta name="twitter:url" content="https://www.docker.com/what-docker">
+<meta name="twitter:title" content="What is Docker">
+<meta name="twitter:description" content="Docker is an open platform to build, ship and run distributed applications anywhere.">
+<meta name="twitter:image:src" content="https://www.docker.com/sites/default/files/social/docker-twitter-share.png">
+<meta property="article:published_time" content="2015-05-14T16:17:40-07:00">
+<meta property="article:modified_time" content="2017-06-08T09:09:30-07:00">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>What is Docker?</title>
+	<link rel="apple-touch-icon" sizes="57x57" href="https://www.docker.com/favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://www.docker.com/favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://www.docker.com/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://www.docker.com/favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://www.docker.com/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://www.docker.com/favicons/apple-touch-icon-120x120.png">
+	<link rel="icon" type="image/png" href="https://www.docker.com/favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="https://www.docker.com/favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="https://www.docker.com/favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="https://www.docker.com/favicons/manifest.json">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	
+	<style type="text/css" media="all">
+@import url("https://www.docker.com/modules/system/system.base.css?ouhpfd");
+@import url("https://www.docker.com/modules/system/system.messages.css?ouhpfd");
+@import url("https://www.docker.com/modules/system/system.theme.css?ouhpfd");
+</style>
+<style type="text/css" media="all">
+@import url("https://www.docker.com/modules/comment/comment.css?ouhpfd");
+@import url("https://www.docker.com/sites/all/modules/date/date_api/date.css?ouhpfd");
+@import url("https://www.docker.com/sites/all/modules/date/date_popup/themes/datepicker.1.7.css?ouhpfd");
+@import url("https://www.docker.com/modules/field/theme/field.css?ouhpfd");
+@import url("https://www.docker.com/modules/node/node.css?ouhpfd");
+@import url("https://www.docker.com/modules/search/search.css?ouhpfd");
+@import url("https://www.docker.com/modules/user/user.css?ouhpfd");
+@import url("https://www.docker.com/sites/all/modules/views/css/views.css?ouhpfd");
+@import url("https://www.docker.com/sites/all/modules/ckeditor/css/ckeditor.css?ouhpfd");
+</style>
+<style type="text/css" media="all">
+@import url("https://www.docker.com/sites/all/modules/ctools/css/ctools.css?ouhpfd");
+</style>
+	<link href="./What is Docker__files/css" rel="stylesheet">
+		<link rel="stylesheet" href="./What is Docker__files/bootstrap.min.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/cubeportfolio.min.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/magnific-popup.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/animate.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/flexslider.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/slick.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/style.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/style-a.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/responsive.css"> 
+		<link rel="stylesheet" href="./What is Docker__files/style-dane.css"> 
+	<script type="text/javascript" src="./What is Docker__files/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.10/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="./What is Docker__files/jquery.once.js"></script>
+<script type="text/javascript" src="./What is Docker__files/drupal.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"docker","theme_token":"XJMcjPX85nybbhGFmlogKLll3xvJxFm2gb994Pz9EHM","js":{"\/\/code.jquery.com\/jquery-1.10.2.min.js":1,"0":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1}}});
+//--><!]]>
+</script>
+	<script src="./What is Docker__files/createjs-2015.11.26.min.js"></script>
+	<script src="./What is Docker__files/cat.js"></script>
+	<script src="./What is Docker__files/turtle.js"></script>
+	<script src="./What is Docker__files/moby.js"></script>
+	<script src="./What is Docker__files/bg.js"></script>
+	<script src="./What is Docker__files/8a432be07c.js"></script><link href="./What is Docker__files/8a432be07c.css" media="all" rel="stylesheet">
+
+<script type="application/ld+json"> 
+{
+  "@context": "http://www.schema.org",
+  "@type": "WebSite",
+  "name": "Docker",
+  "url": "https://www.docker.com"
+}
+</script>
+<!-- Start Analytics.js Code -->
+<script type="text/javascript">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
+  analytics.load("IyBu5RsBo9R8UuqWPhCkO8yEHXeZYnKa");
+  analytics.page();
+  }}();
+</script>
+<!-- End Analytics.js Code -->
+<style>
+<!--/*--><![CDATA[/* ><!--*/
+
+section.enterprise_container_management_section {
+    padding-bottom: 40px;
+}
+section.enterprise_container_management_section .image-container {
+    margin-bottom: 50px;
+}
+.management_bottom_content{
+   max-width: 400px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+/*--><!]]>*/
+</style><script type="text/javascript" src="./What is Docker__files/ei_track_all_packed.js"></script><link id="mktoForms2BaseStyle" rel="stylesheet" type="text/css" href="./What is Docker__files/forms2.css"><link id="mktoForms2ThemeStyle" rel="stylesheet" type="text/css" href="./What is Docker__files/forms2-theme-simple.css"></head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-3 node-type-what-is-docker path-what-docker ng-scope" ng-app="Docker" data-spy="scroll" data-target=".heronav_section" data-offset="70">
+<div itemscope="" itemprop="organization" itemtype="http://schema.org/Organization">
+  <meta itemprop="url" content="http://www.docker.com">
+  <meta itemprop="name" content="Docker">
+  <meta itemprop="sameAs" content="https://www.linkedin.com/company/docker">
+  <meta itemprop="sameAs" content="https://twitter.com/docker">
+  <meta itemprop="logo" content="https://www.docker.com/sites/all/themes/docker/assets/images/brand-full.svg">
+</div>
+<div itemscope="" itemtype="http://schema.org/WebSite">
+  <meta itemprop="url" content="http://www.docker.com/">
+  <meta itemprop="name" content="Docker">
+</div>
+
+		<div class="off-canvas-wrap" data-offcanvas="">
+		<div class="inner-wrap">
+										<header class="main-header">
+	<!-- navigation -->
+	<!-- mobile navigation -->
+	<div class="header">
+		<div class="fixed_div">
+			<div class="burger-container">
+				<div id="burger">
+					<div class="bar topBar"></div>
+					<div class="bar btmBar"></div>
+				</div>
+			</div>
+			<div class="icon icon-apple">
+				<a href="https://www.docker.com/"><img class="brand-full" src="./What is Docker__files/brand-full.svg" alt="Docker" title="Docker"></a>
+				<a href="https://www.docker.com/"><img class="brand-simple" src="./What is Docker__files/brand.svg" alt="Docker" title="Docker"></a>
+			</div> 
+		</div> 
+		<div class="scroll_div">
+			
+			<ul class="nav-main"><li class="first leaf"><a href="https://www.docker.com/what-docker" class="active">What is Docker?</a></li>
+<li class="leaf"><a href="https://www.docker.com/get-docker">Product</a></li>
+<li class="expanded has-submenu"><a href="https://www.docker.com/get-docker" class="nolinkhere">Get Docker</a><ul class="nav-main"><li class="first leaf"><a href="https://www.docker.com/docker" class="heading">For Desktops</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-mac">Mac</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-windows">Windows</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker" class="heading">For Cloud Providers</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-aws">AWS</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-azure">Azure</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker" class="heading">For Servers</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-windows-server">Windows Server</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-centos-distribution">CentOS</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-debian">Debian</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-fedora">Fedora</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-oracle-linux">Oracle Linux</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-red-hat-enterprise-linux-rhel">RHEL</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-suse-linux-enterprise-server-sles">SLES</a></li>
+<li class="last leaf"><a href="https://www.docker.com/docker-ubuntu">Ubuntu</a></li>
+</ul></li>
+<li class="leaf"><a href="https://docs.docker.com/" target="_blank">Docs</a></li>
+<li class="last leaf"><a href="https://www.docker.com/docker-community">Community</a></li>
+</ul> 
+			<ul class="nav-user"><li class="first leaf"><a href="https://cloud.docker.com/">Create Docker ID</a></li>
+<li class="last leaf"><a href="https://cloud.docker.com/login/">Sign In</a></li>
+</ul> 
+			<div class="shop icon icon-bag"></div>
+		</div>
+	</div>
+	<!-- mobile navigation end -->
+	<!-- full width navigation -->
+	<div class="container">
+		<div class="row desktop">
+			<div class="col-xs-2">
+				<a href="https://www.docker.com/"><img class="logo" src="./What is Docker__files/brand-full.svg" alt="Docker" title="Docker"></a>
+				<a href="https://www.docker.com/"><img class="logo_safari" src="./What is Docker__files/brand-full.svg" alt="Docker" title="Docker"></a>
+			</div>
+			<div class="col-xs-10">
+				<ul class="nav-user"><li class="first leaf"><a href="https://cloud.docker.com/">Create Docker ID</a></li>
+<li class="last leaf"><a href="https://cloud.docker.com/login/">Sign In</a></li>
+</ul> 
+				 
+				<a class="nav_xb" href="https://www.docker.com/what-docker#" title=""></a>
+				<ul class="nav-main"><li class="first leaf"><a href="https://www.docker.com/what-docker" class="active">What is Docker?</a></li>
+<li class="leaf"><a href="https://www.docker.com/get-docker">Product</a></li>
+<li class="expanded has-submenu"><a href="https://www.docker.com/get-docker" class="nolinkhere">Get Docker</a><ul class="nav-main"><li class="first leaf"><a href="https://www.docker.com/docker" class="heading">For Desktops</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-mac">Mac</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-windows">Windows</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker" class="heading">For Cloud Providers</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-aws">AWS</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-azure">Azure</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker" class="heading">For Servers</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-windows-server">Windows Server</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-centos-distribution">CentOS</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-debian">Debian</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-fedora">Fedora</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-oracle-linux">Oracle Linux</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-red-hat-enterprise-linux-rhel">RHEL</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-suse-linux-enterprise-server-sles">SLES</a></li>
+<li class="last leaf"><a href="https://www.docker.com/docker-ubuntu">Ubuntu</a></li>
+</ul></li>
+<li class="leaf"><a href="https://docs.docker.com/" target="_blank">Docs</a></li>
+<li class="last leaf"><a href="https://www.docker.com/docker-community">Community</a></li>
+</ul>			</div>
+		</div>
+	</div>
+	<!-- full width navigation end -->
+
+</header>						
+
+<!-- THEME DEBUG -->
+<!-- CALL: theme('page') -->
+<!-- FILE NAME SUGGESTIONS:
+   * page--node--3.tpl.php
+   * page--what-docker.tpl.php
+   x page--what-is-docker.tpl.php
+   * page--node--3.tpl.php
+   * page--node--%.tpl.php
+   * page--node.tpl.php
+   * page.tpl.php
+-->
+<!-- BEGIN OUTPUT from 'sites/all/themes/docker/templates/page--what-is-docker.tpl.php' -->
+ 
+<section class="title_section what_is_docker_class _class" style="padding-top: 126.5px; padding-bottom: 204.5px;">
+<div class="header_padding"></div>
+  <div class="container">
+  	<div class="banner_slides">   
+  	<ul class="slides slick-initialized slick-slider">   
+					<div aria-live="polite" class="slick-list draggable"><div class="slick-track" role="listbox" style="opacity: 1; width: 1140px; transform: translate3d(0px, 0px, 0px);"><li class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 1140px;"> 
+								<h1>What is Docker</h1>				<p class="max-width800">Docker is the world’s leading software container platform.</p>											</li></div></div>
+			</ul>
+	</div>
+  </div>
+	<div id="dockercon_banner_wrap">
+		<a href="http://europe-2017.dockercon.com/" target="_blank">
+			<img src="./What is Docker__files/EU-DockerCon-CTA.svg" alt="DockerCon Europe 2017">
+		</a>
+  </div> 
+</section>
+<div class="heronav_section affix-top">
+  <div class="container">
+	<ul class="nav">
+						<li class="nav-item  "><a class="nav-link" href="https://www.docker.com/what-docker#overview">Overview</a></li>
+							<li class="nav-item "><a class="nav-link" href="https://www.docker.com/what-docker#developers">For Developers</a></li>
+							<li class="nav-item "><a class="nav-link" href="https://www.docker.com/what-docker#operators">For Sys Admins</a></li>
+							<li class="nav-item "><a class="nav-link" href="https://www.docker.com/what-docker#enterprise">For the Enterprise</a></li>
+				</ul>
+  </div>
+</div>
+<section id="overview" class="section whatisdocker_overview_section LeftDev">
+ <div class="container">
+	<div class="midContent">
+		<h2>Overview</h2>		<p>Docker is the world’s leading software container platform. Developers use Docker to eliminate “works on my machine” problems when collaborating on code with co-workers. Operators use Docker to run and manage apps side-by-side in isolated containers to get better compute density. Enterprises use Docker to build agile software delivery pipelines to ship new features faster, more securely and with confidence for both Linux and Windows Server apps. </p>	</div>
+  </div>
+</section>
+ 
+<section id="container" class="section whatisdocker_container_section LeftDev">
+ <div class="container">
+	<div class="midContent">
+		<h2>What is a Container?</h2>		<p>Using containers, everything required to make a piece of software run is packaged into isolated containers. Unlike VMs, containers do not bundle a full operating system - only libraries and settings required to make the software work are needed. This makes for efficient, lightweight, self-contained systems and guarantees that software will always run the same, regardless of where it’s deployed.</p>													<a class="button second-button" target="_self" href="https://www.docker.com/what-container">Learn More About Containers</a>
+					</div>
+  </div>
+</section>
+<section id="developers" class="section whatisdocker_section5_section LeftDev">
+ <div class="container">
+	 <div class="midContent">
+		<h2>Docker For Developers</h2>		<p>Docker automates the repetitive tasks of setting up and configuring development environments so that developers can focus on what matters: building great software.</p>
+<img src="./What is Docker__files/group_5622_0.png" alt="docker for developers" style="max-width:783px;">
+
+<p>Developers using Docker don’t have to install and configure complex databases nor worry about switching between incompatible language toolchain versions. When an app is dockerized, that complexity is pushed into containers that are easily built, shared and run. Onboarding a co-worker to a new codebase no longer means hours spent installing software and explaining setup procedures. Code that ships with Dockerfiles is simpler to work on: Dependencies are pulled as neatly packaged Docker images and anyone with Docker and an editor installed can build and debug the app in minutes.</p>
+
+
+												<a class="button main-button" target="_self" href="https://www.docker.com/get-docker">Get Docker for Developers</a>
+										  </div>
+	  			<ul class="items widthcol3">
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section5_img" style="height: 36px;">
+								<img src="./What is Docker__files/Documentation_96@2x.png" alt="Any App, Language, or Stack">
+							</div>							<div data-mh="mh_whatisdocker_section5_con" style="height: 176px;">
+								<h3>Any App, Language, or Stack</h3>								<p>Build, test, debug and deploy Linux and Windows Server container apps written in any programming language without risk of incompatibilities or version conflicts. </p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section5_img" style="height: 36px;">
+								<img src="./What is Docker__files/githubstar_48@2x.png" alt="Awesome Developer Experience">
+							</div>							<div data-mh="mh_whatisdocker_section5_con" style="height: 176px;">
+								<h3>Awesome Developer Experience</h3>								<p>Reduce onboarding time by 65%: Quickly build, test and run complex multi-container apps and stop wasting time installing and maintaining software on servers and developer machines. All dependencies run in containers, eliminating “works on my machine” problems.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section5_img" style="height: 36px;">
+								<img src="./What is Docker__files/BuiltInContainerOrch_48@2x.png" alt="Built-in container orchestration">
+							</div>							<div data-mh="mh_whatisdocker_section5_con" style="height: 176px;">
+								<h3>Built-in container orchestration</h3>								<p>Docker comes with built-in swarm clustering that’s easy to configure. Test and debug apps in environments that mimic production with minimal setup.
+</p>							</div>
+						</div>
+					</li>
+						</ul>
+		  </div>
+</section>
+<section id="operators" class="section whatisdocker_section1_section LeftDev bg_lightgray">
+ <div class="container">
+ 	 <div class="midContent">
+	<h2>Docker for Ops</h2>	<p>Docker streamlines software delivery. Develop and deploy bug fixes and new features without roadblocks. Scale applications in real time.</p>
+
+<p>Docker is the secret weapon of developers and IT ops teams everywhere, allowing them to build, ship, test, and deploy apps automatically, securely, and portably with no surprises. No more wikis, READMEs, long runbook documents and post-it notes with stale information. Teams using Docker know that their images work the same in development, staging, and production. New features and fixes get to customers quickly without hassle, surprises, or downtime.</p>									<a class="button main-button" target="_self" href="https://www.docker.com/get-docker">Get Docker for Sys Admins</a>
+								  </div>
+	  			<ul class="items widthcol3">
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section1_img" style="height: 36px;">
+								<img src="./What is Docker__files/Efficiency_48@2x.png" alt="Ship 13x More">
+							</div>							<div data-mh="mh_whatisdocker_section1_con" style="height: 176px;">
+								<h3>Ship 13x More</h3>								<p>Docker users ship software on average 13 times more frequently. Teams using Docker push software updates quickly and get fixes and new features to customers faster.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section1_img" style="height: 36px;">
+								<img src="./What is Docker__files/business_48@2x.png" alt="Quickly Scale">
+							</div>							<div data-mh="mh_whatisdocker_section1_con" style="height: 176px;">
+								<h3>Quickly Scale</h3>								<p>Built in orchestration scales to thousands of nodes and containers. Docker containers spin up and down in seconds, making it easy to scale application services to satisfy peak customer demand, and back down when demand ebbs.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section1_img" style="height: 36px;">
+								<img src="./What is Docker__files/Standardize_48@2x.png" alt="Improve IT Efficiency">
+							</div>							<div data-mh="mh_whatisdocker_section1_con" style="height: 176px;">
+								<h3>Improve IT Efficiency</h3>								<p>Save up to 10X in personnel hours in app maintenance and support. Docker makes it easy to deploy, identify, and resolve issues and reduce overall IT operational costs. Reduce downtime when deploying updates or quickly roll back with minimal disruption.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section1_img" style="height: 36px;">
+								<img src="./What is Docker__files/distribute@2x.png" alt="Distribute &amp; Share Content">
+							</div>							<div data-mh="mh_whatisdocker_section1_con" style="height: 152px;">
+								<h3>Distribute &amp; Share Content</h3>								<p>Build, manage, and distribute Docker images in secure Docker Registries located on-premises or in the cloud. Image updates, configuration changes, and build history are automatically synchronized across the organization.
+</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section1_img" style="height: 36px;">
+								<img src="./What is Docker__files/share@2x.png" alt="Simply Share Applications ">
+							</div>							<div data-mh="mh_whatisdocker_section1_con" style="height: 152px;">
+								<h3>Simply Share Applications </h3>								<p>Docker guarantees that apps will work the same everywhere. With Docker images, the entire stack and configuration is part of the image, and there’s no need to configure host environments other than installing Docker.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section1_img" style="height: 36px;">
+								<img src="./What is Docker__files/guarantee@2x.png" alt="Guarantee App Security ">
+							</div>							<div data-mh="mh_whatisdocker_section1_con" style="height: 152px;">
+								<h3>Guarantee App Security </h3>								<p>Securely collaborate on apps with authorized users and protect code as it moves to production. Docker Content Trust and built-in security ensures that the right code is available to the right people at the right time. </p>							</div>
+						</div>
+					</li>
+						</ul>
+		  </div>
+</section>
+<section id="enterprise" class="section whatisdocker_section2_section LeftDev">
+ <div class="container">
+ 	 <div class="midContent">
+	<h2>For the Enterprise</h2>	<p>Docker is at the heart of the modern app platform, bridging developer and IT, Linux and Windows. Docker works in the cloud just as well as on-premise; and supports both traditional and microservices architectures. Use Docker to build, network, secure and schedule containers and manage them from development to production. Docker sets enterprises on the path to digital transformation by enabling all apps to be agile, cloud-ready and secure at optimal costs.</p>					<div class="select_your_platform">				<a class="button main-button" target="_blank" href="https://www.docker.com/what-docker#">Get Started for Free</a>
+									<ul class="platform_nav"><li class="heading top">Select Your Platform</li>
+	<li class="heading">For Cloud Providers</li>
+	<li><a href="https://store.docker.com/editions/enterprise/docker-ee-aws/trial" target="_blank">AWS</a></li>
+	<li><a href="https://store.docker.com/editions/enterprise/docker-ee-azure/trial" target="_blank">Azure</a></li>
+	<li class="heading">For Servers</li>
+	<li><a href="https://store.docker.com/editions/enterprise/docker-ee-server-centos/trial" target="_blank">CentOS</a></li>
+	<li><a href="https://store.docker.com/editions/enterprise/docker-ee-server-oraclelinux/trial" target="_blank">Oracle Linux</a></li>
+	<li><a href="https://store.docker.com/editions/enterprise/docker-ee-server-ubuntu/trial" target="_blank">Ubuntu</a></li>
+	<li><a href="https://store.docker.com/editions/enterprise/docker-ee-server-windows/trial" target="_blank">Windows Server 2016</a></li>
+	<li><a href="https://store.docker.com/editions/enterprise/docker-ee-server-rhel/trial" target="_blank">RHEL</a></li>
+	<li><a href="https://store.docker.com/editions/enterprise/docker-ee-server-sles/trial" target="_blank">SLES</a></li>
+</ul>				</div>
+															<a class="simple_link" target="_self" href="https://www.docker.com/enterprise-edition">Learn More</a>
+								  </div>
+	  			<ul class="items widthcol3">
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section2_img" style="height: 36px;">
+								<img src="./What is Docker__files/Group 7@2x.png" alt="One Platform For All Apps">
+							</div>							<div data-mh="mh_whatisdocker_section2_con" style="height: 152px;">
+								<h3>One Platform For All Apps</h3>								<p>Docker provides a unified framework for all apps - monolith or microservices, Linux or Windows, on-premises or cloud - a standard container and workflow for secure, agile and portable apps.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section2_img" style="height: 36px;">
+								<img src="./What is Docker__files/lightbulb_48@2x.png" alt="Innovate Faster at Scale">
+							</div>							<div data-mh="mh_whatisdocker_section2_con" style="height: 152px;">
+								<h3>Innovate Faster at Scale</h3>								<p>Docker containers accelerate delivery of new apps with microservices architecture by automating deployment pipelines. New features can be released (and rolled back in case of problems) frequently to quickly address customer needs.
+</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section2_img" style="height: 36px;">
+								<img src="./What is Docker__files/Group 10@2x.png" alt="Break Down Silos">
+							</div>							<div data-mh="mh_whatisdocker_section2_con" style="height: 152px;">
+								<h3>Break Down Silos</h3>								<p>Open interfaces, APIs, and plugins makes it easy to integrate Docker into an existing environment and extend Docker to different systems. A common interface allows dev and ops to work together without conflict or disruption.</p>							</div>
+						</div>
+					</li>
+						</ul>
+		  </div>
+</section>
+<section id="journey" class="section whatisdocker_section3_section CenterDev">
+ <div class="container">
+ 	 <div class="midContent">
+		<p>Looking for ways to get started?<br>Here are common use cases to begin the Docker journey.</p>		  </div>
+	  			<ul class="items widthcol2">
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section3_img" style="height: 33px;">
+								<img src="./What is Docker__files/Group 5@2x.png" alt="Modernize Traditional Apps">
+							</div>							<div data-mh="mh_whatisdocker_section3_con" style="height: 80px;">
+								<h3>Modernize Traditional Apps</h3>								<p>Package existing apps into containers and immediately improve security, reduce costs, and gain cloud portability with no changes to the app code.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section3_img" style="height: 33px;">
+								<img src="./What is Docker__files/Update_48@2x.png" alt="Microservices">
+							</div>							<div data-mh="mh_whatisdocker_section3_con" style="height: 80px;">
+								<h3>Microservices</h3>								<p>Containers streamline development and deployment of apps designed with the microservices architecture pattern.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section3_img" style="height: 36px;">
+								<img src="./What is Docker__files/Group 6@2x.png" alt="DevOps (CI/CD)">
+							</div>							<div data-mh="mh_whatisdocker_section3_con" style="height: 104px;">
+								<h3>DevOps (CI/CD)</h3>								<p>Accelerate and automate development pipelines with rapid feedback loops while eliminating app conflicts and increasing developer productivity.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section3_img" style="height: 36px;">
+								<img src="./What is Docker__files/Optimize_48@2x.png" alt="Infrastructure Optimization">
+							</div>							<div data-mh="mh_whatisdocker_section3_con" style="height: 104px;">
+								<h3>Infrastructure Optimization</h3>								<p>Containerize apps and improve workload density by running them side-by-side on the same servers. Docker helps reduce costs by consolidating infrastructure, improving utilization, and accelerating cloud migration.</p>							</div>
+						</div>
+					</li>
+				
+					<li>
+						<div class="item left">
+							<div data-mh="mh_whatisdocker_section3_img" style="">
+								<img src="./What is Docker__files/hybrid_cloud2x_0.png" alt="Hybrid Cloud">
+							</div>							<div data-mh="mh_whatisdocker_section3_con" style="">
+								<h3>Hybrid Cloud</h3>								<p>From private datacenters to public cloud infrastructure, Docker allows apps to be fully portable from one infrastructure to another without rewriting code. Accelerate migration to cloud and enable a hybrid or multi cloud environment.</p>							</div>
+						</div>
+					</li>
+						</ul>
+		  </div>
+</section>
+<section id="" class="section whatisdocker_section4_section CenterDev">
+ <div class="container">
+ 	 <div class="midContent">
+											<a class="button main-button" target="_blank" href="https://www.docker.com/use-cases">Learn More about Use Cases</a>
+								  </div>
+	    </div>
+</section>
+<section id="other_resources" class="bg_lightgray other_resources_section CenterDev">
+ <div class="container">
+					<ul class="items widthcol3">
+								<li>
+						<div class="item">
+							<a target="_self" href="https://www.docker.com/pricing">
+								<div data-mh="mh_other_resources_img" style="height: 40px;">
+									<img src="./What is Docker__files/cost_saving_48.svg" alt="View pricing plans">
+								</div>								<div data-mh="mh_other_resources_con" style="height: 24px;">
+									<h3>View pricing plans</h3>								</div>	
+							</a>
+						</div>
+				</li>
+								<li>
+						<div class="item">
+							<a target="_self" href="https://www.docker.com/customers">
+								<div data-mh="mh_other_resources_img" style="height: 40px;">
+									<img src="./What is Docker__files/Capa_1.svg" alt=" see customers">
+								</div>								<div data-mh="mh_other_resources_con" style="height: 24px;">
+									<h3> see customers</h3>								</div>	
+							</a>
+						</div>
+				</li>
+								<li>
+						<div class="item">
+							<a target="_self" href="https://www.docker.com/use-cases">
+								<div data-mh="mh_other_resources_img" style="height: 40px;">
+									<img src="./What is Docker__files/use_cases_48.svg" alt=" View use cases">
+								</div>								<div data-mh="mh_other_resources_con" style="height: 24px;">
+									<h3> View use cases</h3>								</div>	
+							</a>
+						</div>
+				</li>
+						</ul>
+		  </div>
+</section>
+
+<!-- END OUTPUT from 'sites/all/themes/docker/templates/page--what-is-docker.tpl.php' -->
+
+			<a class="exit-off-canvas"></a>
+		</div>
+	</div>
+			<section class="newsletter_section">
+	<div class="container">
+		<div class=" newsletter"> 
+			<script src="./What is Docker__files/forms2.min.js"></script>
+			<form id="mktoForm_1038" class="ng-pristine ng-valid mktoForm mktoHasWidth mktoLayoutLeft" novalidate="novalidate" style="font-family: Helvetica, Arial, sans-serif; font-size: 13px; color: rgb(51, 51, 51); width: 251px;"><style type="text/css">.mktoForm .mktoButtonWrap.mktoSimple .mktoButton {
+color:#fff;
+border:1px solid #75ae4c;
+padding:0.4em 1em;
+font-size:1em;
+background-color:#99c47c;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#99c47c), to(#75ae4c));
+background-image: -webkit-linear-gradient(top, #99c47c, #75ae4c);
+background-image: -moz-linear-gradient(top, #99c47c, #75ae4c);
+background-image: linear-gradient(to bottom, #99c47c, #75ae4c);
+}
+.mktoForm .mktoButtonWrap.mktoSimple .mktoButton:hover {
+border:1px solid #447f19;
+}
+.mktoForm .mktoButtonWrap.mktoSimple .mktoButton:focus {
+outline:none;
+border:1px solid #447f19;
+}
+.mktoForm .mktoButtonWrap.mktoSimple .mktoButton:active{
+background-color:#75ae4c;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#75ae4c), to(#99c47c));
+background-image: -webkit-linear-gradient(top, #75ae4c, #99c47c);
+background-image: -moz-linear-gradient(top, #75ae4c, #99c47c);
+background-image: linear-gradient(to bottom, #75ae4c, #99c47c);
+}
+</style><div class="mktoFormRow"><div class="mktoFieldDescriptor mktoFormCol" style="margin-bottom: 10px;"><div class="mktoOffset" style="width: 10px;"></div><div class="mktoFieldWrap mktoRequiredField"><label for="Email" class="mktoLabel mktoHasWidth" style="width: 100px;"><div class="mktoAsterix">*</div>Email Address:</label><div class="mktoGutter mktoHasWidth" style="width: 10px;"></div><input id="Email" name="Email" maxlength="255" type="email" class="mktoField mktoEmailField mktoHasWidth mktoRequired" style="width: 150px;" placeholder="Subscribe to our newsletter"><div class="mktoClear"></div></div><div class="mktoClear"></div></div><div class="mktoClear"></div></div><div class="mktoFormRow"><input type="hidden" name="list_1019" class="mktoField mktoFieldDescriptor mktoFormCol" value="subscribed" style="margin-bottom: 10px;"><div class="mktoClear"></div></div><div class="mktoButtonRow"><span class="mktoButtonWrap mktoSimple" style="margin-left: 120px;"><button type="submit" class="mktoButton">Subscribe</button></span></div><input type="hidden" name="formid" class="mktoField mktoFieldDescriptor" value="1038"><input type="hidden" name="munchkinId" class="mktoField mktoFieldDescriptor" value="929-FJL-178"></form>
+			<script>
+				MktoForms2.loadForm("//app-sj05.marketo.com", "929-FJL-178", 1038, function(form) {
+					form.onSuccess(function(values, followUpUrl) {
+						location.href = "/thank-you-subscribing-docker-newsletter";
+						return false;
+					});
+				});
+				MktoForms2.whenReady(function(form){
+				/*	$('#mktoForm_1038 #Email').attr('placeholder', 'Enter your email'); */
+				$('.newsletter').find("#Email").each(function(ev){
+					if(!$(this).val()) { 
+						$(this).attr("placeholder", "Subscribe to our newsletter");
+					}
+				});   
+				$(".newsletter button.mktoButton").text('Subscribe');
+				});
+			</script> 
+
+		</div>
+	</div>
+</section>
+<footer class="main_footer">
+	<div class="container">
+		<div class="top_footer">
+			<div class="row">
+				<div class="col-xs-12 col-sm-3 col-md-2">
+					<ul class="footer_links links_1"><li class="first leaf"><a href="https://www.docker.com/what-docker" class="active">What is Docker</a><span> </span></li>
+<li class="leaf"><a href="https://www.docker.com/what-container">What is a Container</a></li>
+<li class="leaf"><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+<li class="leaf"><a href="https://www.docker.com/customers">Customers</a></li>
+<li class="leaf break"><a href="https://www.docker.com/industry-government">For Government</a></li>
+<li class="leaf"><a href="https://www.docker.com/find-partner">Find a Partner</a></li>
+<li class="leaf"><a href="https://www.docker.com/partners/partner-program">Become a Partner</a></li>
+<li class="leaf"><a href="https://www.docker.com/company">About Docker</a></li>
+<li class="leaf"><a href="https://www.docker.com/company/management">Management</a></li>
+<li class="leaf"><a href="https://www.docker.com/company/news-and-press">Press &amp; News</a></li>
+<li class="last leaf"><a href="https://www.docker.com/careers">Careers</a></li>
+</ul> 
+				</div>
+				<div class="col-xs-12 col-sm-3 col-md-2">
+					<ul class="footer_links links_2"><li class="first leaf"><a href="https://www.docker.com/get-docker">Product</a><span> </span></li>
+<li class="leaf"><a href="https://www.docker.com/pricing">Pricing</a></li>
+<li class="leaf"><a href="https://www.docker.com/community-edition">Community Edition</a></li>
+<li class="leaf break"><a href="https://www.docker.com/enterprise-edition">Enterprise Edition </a></li>
+<li class="leaf"><a href="https://www.docker.com/enterprise-edition#container_management">Docker Datacenter</a></li>
+<li class="leaf"><a href="https://cloud.docker.com/" target="_blank">Docker Cloud</a></li>
+<li class="last leaf"><a href="https://store.docker.com/" target="_blank">Docker Store</a></li>
+</ul> 
+				</div>
+				<div class="col-xs-12 col-sm-3 col-md-3">
+					<ul class="footer_links links_3"><li class="first leaf showmobileonly"><a href="https://www.docker.com/get-docker">Get Docker</a><span> </span></li>
+<li class="leaf"><a href="https://www.docker.com/docker-mac">Docker for Mac </a></li>
+<li class="leaf break"><a href="https://www.docker.com/docker-windows">Docker for Windows(PC)</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-aws" class="web30">Docker for AWS</a></li>
+<li class="leaf break"><a href="https://www.docker.com/docker-azure">Docker for Azure</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-windows-server">Docker for Windows Server</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-centos-distribution">Docker for the CentOS distribution</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-debian">Docker for Debian</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-fedora">Docker for Fedora®</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-oracle-linux">Docker for Oracle Linux</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-red-hat-enterprise-linux-rhel">Docker for RHEL</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-suse-linux-enterprise-server-sles">Docker for SLES</a></li>
+<li class="last leaf"><a href="https://www.docker.com/docker-ubuntu">Docker for Ubuntu</a></li>
+</ul> 
+				</div>
+				<div class="col-xs-12 col-sm-3 col-md-2">
+					<ul class="footer_links links_5"><li class="first leaf"><a href="https://docs.docker.com/" target="_blank">Documentation</a><span> </span></li>
+<li class="leaf"><a href="https://blog.docker.com/" target="_blank">Blog</a></li>
+<li class="leaf"><a href="https://blog.docker.com/feed/" target="_blank">RSS Feed</a></li>
+<li class="leaf"><a href="https://training.docker.com/" target="_blank">Training</a></li>
+<li class="leaf"><a href="https://success.docker.com/kbase" target="_blank">Knowledge Base</a></li>
+<li class="last leaf"><a href="https://www.docker.com/products/resources">Resources</a></li>
+</ul> 
+				</div>
+				<div class="col-xs-12 col-sm-3 col-md-2">
+					<ul class="footer_links links_4"><li class="first leaf"><a href="https://www.docker.com/docker-community">Community</a><span> </span></li>
+<li class="leaf"><a href="https://www.docker.com/technologies/overview">Open Source</a></li>
+<li class="leaf"><a href="https://www.docker.com/community/events">Events</a></li>
+<li class="leaf"><a href="https://forums.docker.com/" target="_blank">Forums</a></li>
+<li class="leaf"><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+<li class="leaf"><a href="https://www.docker.com/community-partnerships">Scholarships</a></li>
+<li class="last leaf"><a href="https://blog.docker.com/curated/" target="_blank">Community News</a></li>
+</ul> 
+				</div>
+			</div>
+			<div class="footer-nav">
+				<nav class="footer_sub_nav">
+					<ul class="menu"><li class="first leaf"><a href="http://status.docker.com/">Status</a></li>
+<li class="leaf"><a href="https://www.docker.com/docker-security">Security</a></li>
+<li class="leaf"><a href="https://www.docker.com/legal">Legal</a></li>
+<li class="last leaf"><a href="https://www.docker.com/company/contact">Contact</a></li>
+</ul>				</nav>
+			</div>
+		</div>
+		<div class="bottom_footer">
+			<div class="footer-copyright">
+				<p class="copyright">
+					Copyright © 2017 Docker Inc. All rights reserved.				</p>
+			</div>
+			<div class="footer_social_nav">
+				<ul class="nav-social"><li class="first leaf"><a href="http://twitter.com/docker" class="fa fa-twitter">Twitter</a></li>
+<li class="leaf"><a href="http://www.youtube.com/user/dockerrun" class="fa fa-youtube">Youtube</a></li>
+<li class="leaf"><a href="https://plus.google.com/u/0/communities/108146856671494713993" class="fa fa-google-plus">Google</a></li>
+<li class="leaf"><a href="https://github.com/docker/docker" class="fa fa-github">Github</a></li>
+<li class="leaf"><a href="https://www.linkedin.com/company/docker" class="fa fa-linkedin">Linkedin</a></li>
+<li class="leaf"><a href="https://www.facebook.com/docker.run" class="fa fa-facebook">Facebook</a></li>
+<li class="leaf"><a href="http://www.reddit.com/r/docker" class="fa fa-reddit-alien">Reddit</a></li>
+<li class="last leaf"><a href="http://www.slideshare.net/docker" class="fa fa-slideshare">Slideshare</a></li>
+</ul> 
+			</div>
+		</div>
+	</div>
+</footer>
+<script type="text/javascript" charset="utf-8">
+  var _eiq = _eiq || [];
+  var _engagio_settings = {
+    accountId: "0381e85d5b97e7a3954996fedd3cbfcb68c98e1e"
+  };
+  (function() {
+    var ei = document.createElement('script'); ei.type = 'text/javascript'; ei.async = true;
+    ei.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'web-analytics.engagio.com/js/ei.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ei, s);
+  })();
+</script>
+		<script src="./What is Docker__files/jquery-1.11.3.min.js"></script>
+		<script src="./What is Docker__files/jquery-migrate-1.4.1.min.js"></script>
+		<script src="./What is Docker__files/bootstrap.min.js"></script>
+		<script src="./What is Docker__files/angular.min.js"></script>
+		<script src="./What is Docker__files/affix.js"></script>
+		<script src="./What is Docker__files/jquery.ba-bbq.js"></script>
+		<script src="./What is Docker__files/jquery.smooth-scroll.min.js"></script>
+		<script src="./What is Docker__files/jquery.cubeportfolio.min.js"></script>
+		<script src="./What is Docker__files/jquery.magnific-popup.min.js"></script>
+		<script src="./What is Docker__files/jquery.flexslider-min.js"></script>
+		<script src="./What is Docker__files/jquery.matchHeight.min.js"></script>
+		<script src="./What is Docker__files/wow.min.js"></script>
+		<script src="./What is Docker__files/slick.min.js"></script>
+		<script type="text/javascript" src="./What is Docker__files/ng-script.js"></script>
+		<script async="" src="./What is Docker__files/script.js"></script>
+			
+	<script>var $ = jQuery.noConflict();</script>
+		<!-- Google Tag Manager --> 
+	<noscript>&lt;iframe src="//www.googletagmanager.com/ns.html?id=GTM-PSVHG8" height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PSVHG8');</script>
+	<!-- End Google Tag Manager -->
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"f419820c87","applicationID":"50935071","transactionName":"YAdQNkZRD0FSUkVZDFlNcwFAWQ5cHF9eVAZoElMFUW8XW1ZG","queueTime":0,"applicationTime":886,"atts":"TEBTQA5LHE8=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+
+<!-- END OUTPUT from 'sites/all/themes/docker/templates/html.tpl.php' -->
+
+<div id="mktoStyleLoaded" style="display: none; border-top-color: rgb(18, 52, 86);"></div><form class="ng-pristine ng-valid mktoForm mktoHasWidth mktoLayoutLeft" novalidate="novalidate" style="font-family: Helvetica, Arial, sans-serif; font-size: 13px; color: rgb(51, 51, 51); visibility: hidden; position: absolute; top: -500px; left: -1000px; width: 2480px;"></form><iframe name="mktoFormsXDIframe0.7150897398044547" id="MktoForms2XDIframe" src="./What is Docker__files/XDFrame.html" style="display: none;"></iframe><script src="https://dc.ads.linkedin.com/collect/?time=1502412884988&amp;pid=20029&amp;url=https%3A%2F%2Fwww.docker.com%2Fwhat-docker&amp;pageUrl=https%3A%2F%2Fwww.docker.com%2Fwhat-docker&amp;ref=https%3A%2F%2Fwww.docker.com%2F&amp;fmt=js&amp;s=1" type="text/javascript"></script></body></html>

@@ -1,0 +1,490 @@
+/* ========================= Start Responsive Sytling ========================= */
+
+/* ******** 1199px ******** */
+@media (min-width:768px) and (max-width:1199px) {
+.home_middle_section  .middle_content   .button{
+margin-left:0;
+}
+}/* ******** 1199px ******** */
+@media (min-width:768px) and (max-width:991px) {
+.sidebarnav_section+.col-xs-0.col-sm-0.floatleft{
+	display: none;
+}
+.sidebarnav_section+.col-xs-0.col-sm-0.floatleft+.floatleft{
+	padding-left: 65px;
+    padding-top: 0;
+}
+.enterprise_container_management_section .container_management_image_wrap {
+    width: 70%;
+}
+.events_section .search_container input {
+    width: 255px;
+}
+.events_section .search_container select {
+    width: 140px;
+    background-position: 120px center;
+}
+}
+
+
+
+/* ******** 1199px ******** */
+@media screen and (min-width:1300px) {
+
+}
+@media screen and (max-width:1199px) {
+
+.get_docker_edition_section ul.items>li .item .button{
+    padding: 12px 30px 10px 30px;
+}
+}
+
+/* ******** 991px ******** */
+@media screen and (max-width:991px) {
+div.heronav_section.affix {
+	top: 50px;
+    position: fixed!important;
+}
+div.heronav_section ul li {
+    margin: auto 5px;
+}
+div.heronav_section ul li a {
+    font-size: 13px;
+}
+header.main-header {
+    height: 51px;
+}
+header.main-header+section .header_padding {
+    padding-top: 51px;
+}
+section.docker_customers_section .widthcol4>li {
+    width: 33.33%;
+}
+.community_download_section .simple_link {
+    display: block;
+    margin-left: 0!important;
+}
+.career_job_openings_section .widthcol4>li {
+    width: 33.33%;
+}
+.other_resources_section ul li {
+    margin: 30px auto;
+}
+.other_resources_section ul li+li {
+    border-left: 0;
+}
+.platform_get_started_section ul.items .button{
+	padding: 12px 30px 10px 30px;
+}
+.get_docker_edition_section ul.items {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.get_docker_edition_section ul.items>li {
+    padding: 20px 15px 20px;
+}
+.get_docker_edition_section ul.items>li:nth-of-type(2) .item {
+    padding: 30px 15px;
+}
+
+.get_docker_edition_section ul.items>li .item .button{
+    padding: 12px 15px 10px 15px;
+}
+.ibm_solution_overview_section .ibm_solution{
+	margin-bottom:20px;
+}
+.repos li{
+	width: 46%;
+}
+}
+/* ******** Min 767px ******** */
+@media screen and (min-width:768px) {
+.main_footer .footer_links li {
+    display: block!important;
+}
+.showmobileonly{
+	display:none!important;
+}
+.main_footer .footer_links li.showmobileonly{
+	display:none!important;
+}
+}
+/* ******** 767px ******** */
+@media screen and (max-width:767px) {
+.col-xs-0{
+	display:none;
+}
+.heronav_section ul{
+	overflow-y: hidden;
+    padding: 0;
+    margin: 0;
+}
+div.heronav_section ul li {
+    margin: auto;
+    padding: 0 5px;
+}
+div.heronav_section ul li:first-child{
+	padding-left:30px;
+}
+div.heronav_section ul li:last-child{
+	padding-right:30px;
+}
+.showdesktoponly{
+	display:none!important;
+}
+.section {
+    padding: 50px 0;
+}
+div.heronav_section {
+	position: relative;
+}
+div.heronav_section .container {
+    overflow-y: hidden;
+    display: block;
+    visibility: visible;
+    white-space: nowrap;
+    padding: 0px;
+}
+.col-xs-12.middle_image{
+	margin-top: 50px;
+} 
+section.resources_use_cases_section .resources_video_slider .inside_laptop_image {
+    padding: 11% 12% 14% 12%;
+}
+section.docker_customers_section .widthcol4>li {
+    width: 50%;
+}
+div.sidebarnav_section, div.sidebarnav_section.affix {
+    margin-top: 65px;
+    position: static;
+    padding-top: 0;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.enterprise_container_management_section .container_management_image_wrap{
+	position: relative;
+    margin-top: 20px;
+	width: 100%;
+    height: inherit;
+}
+.enterprise_container_management_section .container_management_image_wrap img{
+	height: inherit;
+}
+.middle_image {
+	margin-top: 40px;
+}
+ul.items {
+  /*  margin-left: -15px;
+    margin-right: -15px; */
+}
+.career_job_openings_section ul.items{
+    margin-left: 0;
+    margin-right: 0;
+}
+.career_job_openings_section .widthcol4>li {
+    width: 50%;
+}
+.career_job_openings_section ul.items>li .left{
+	text-align: center;
+    max-width: 190px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.docker_captian_about_section .padding_50_0{
+	padding: 0px 15px;
+}
+.sidebarnav_section+.floatleft {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.contribute_section .repos_section input,
+.events_section .search_container input,
+.docker_customers_section .search_container input { 
+    width: 600px;
+    display: block;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+.company_overview_section {
+    padding-bottom: 0px;
+}
+.company_about_section {
+    padding-top: 0;
+}
+.company_about_section ul.items>li {
+    margin-bottom: 0;
+    padding: 15px 30px 15px;
+}
+.timeline ul{
+	margin-left: 20px;
+}
+.timeline::before {
+    left: 8px;
+}
+.our_advisors ul.items>li {
+    text-align: center;
+}
+.our_advisors ul.items>li img {
+    border-radius: 200px;
+}
+.our_advisors ul.items>li .item h3 {
+    text-align: center;
+    margin-top: 10px;
+}
+.flexible_content ul.items.widthcol2>li{
+	padding-right: 15px!important;
+	padding-left: 15px!important;
+    border: none;
+}
+.get_docker_edition_section ul.items>li .item .button {
+    display: block;
+    margin-right: 0!important;
+    margin-left: 0!important;
+}
+.partner_inside .button {
+    max-width: 100%;
+    width: 360px;
+    margin-top: 30px;
+}
+.partner_inside .button+.button {
+    margin-top: 10px;
+}
+.path-meetup-groups .flexible_content .text_center{
+	text-align:left;
+}
+.contribute_section ul.items{
+	margin-top:30px;
+}
+.home_middle_section .middle_content {
+    padding-right: 15px;
+}
+.home_middle_section .home_buttons_wrap {
+    text-align: center;
+}
+}
+
+/* ******** 680px ******** */
+@media screen and (max-width:680px) {
+
+}
+
+/* ******** 600px ******** */
+@media screen and (max-width:600px) {
+a.button+a.button {
+	margin-left: 0;
+}
+.select_your_platform {
+    margin: 0;
+}
+section.title_section .select_your_platform a.button {
+	display: block;
+}
+.newsletter .mktoForm .mktoFormRow+.mktoFormRow {
+    display: none!important;
+}
+.newsletter .mktoForm .mktoFormRow,.newsletter .mktoForm .mktoFormRow .mktoFieldDescriptor ,.newsletter .mktoForm .mktoFormRow .mktoFieldWrap{
+	width: 100%;
+}
+.newsletter .mktoForm .mktoButtonWrap button.mktoButton{
+	margin-left: 0;
+}
+.newsletter .mktoForm  input.mktoField{
+	width: 100%!important;
+    max-width: 100%;
+	height: initial;
+}
+.other_resources.items>li {
+    width: 50%;
+}
+.community_section ul.items>li .communities a {
+    margin: 15px 18px;
+    width: 80px;
+}
+.flexible_content ul.items>li .questions {
+    padding: 0;
+}
+section.title_section .button {
+    display: table;
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
+.management .widthcol3>li {
+    padding: 20px 0;
+}
+.get_docker_edition_section  ul.items>li:nth-of-type(2) {
+    position: relative;
+}
+.get_docker_edition_section ul.items>li .item {
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 2.5px 0 rgba(0,0,0,0.09);
+    padding: 30px;
+    padding-bottom: 90px;
+}
+.platform_get_started_section ul.items.widthcol1 li {
+    width: 100%;
+}
+.other_resources_section ul li {
+    margin: 10px auto;
+}
+.partners_content,
+.government_partners_content {
+    padding: 30px 40px 40px 40px;
+}
+.partners_content h3,
+.government_partners_content h3 {
+    margin-top: 0;
+}
+.partners_content p,
+.government_partners_content p {
+    margin-bottom: 30px;
+}
+.sidebarnav_section+.floatleft>section:first-of-type {
+    padding-top: 0px;
+}
+.community_section .communities {
+    text-align: center;
+}
+.partners_tabs ul li {
+    max-width: 50%;
+    padding-top: 0;
+}
+.government_partners_tabs ul li {
+    max-width: 50%;
+    padding-top: 0;
+}
+.government_partners_tabs ul li:last-child{
+    max-width: 50%;
+}
+.get_docker_edition_section .price_btn .select_your_platform {
+    max-width: 176px;
+}
+.partner_inside h2 {
+    font-size: 22px;
+}
+.partner_inside .content .button {
+    padding: 12px 15px 10px 15px;
+    min-width: initial;
+    font-size: 14px;
+}
+.margin50 {
+    margin-bottom: 15px;
+}
+}
+/* ******** 500px ******** */
+@media screen and (max-width:500px) {
+section.docker_customers_section .widthcol4>li {
+    width: 100%;
+} 
+.event_item {
+    padding-left: 30px;
+}
+.partner_inside ul.products-items li {
+    width: 100%;
+}
+.repos li{
+	width: 96%;
+}
+.repos li iframe {
+    min-height: 200px;
+}
+}
+/* ******** 568px ******** */
+@media screen and (max-width:400px) {
+.button {
+    display: block;
+    width: 100%;
+}
+.other_resources.items>li {
+    width: 100%;
+}
+.career_job_openings_section .widthcol4>li {
+    width: 100%;
+}
+.select_your_platform {
+    width: 100%;
+}
+section.title_section .button {
+	display: block;
+}
+.video_container a.play_btn {
+    width: 34px;
+    height: 41px;
+    margin-top: -21px;
+    margin-left: -17px;
+}
+.platform_get_started_section ul.items .button{
+	padding: 12px 15px 10px 15px;
+}
+.partner_inside .content a.button+a.button {
+    margin-left: 0px;
+}
+.repos li iframe {
+    min-height: 260px;
+}
+}
+@media screen and (max-width:374px) {
+.management .widthcol3>li {
+    width: 100%;
+}
+.partners_tabs ul li {
+    max-width: 100%;
+}
+.government_partners_tabs  ul li {
+    max-width: 100%;
+}
+.government_partners_tabs ul li:last-child{
+    max-width: 100%;
+}
+}
+@media screen and (max-width:690px) {
+.job-application #application{
+        height: 3600px;
+}
+}
+@media screen and (max-width:560px) {
+.job-application #application{
+        height: 4000px;
+}
+}
+@media screen and (max-width:440px) {
+.job-application #application{
+        height: 4500px;
+}
+}
+@media screen and (max-width:370px) {
+.job-application #application{
+        height: 5200px;
+}
+}
+@media screen and (max-width:300px) {
+.job-application #application{
+        height: 5500px;
+}
+}
+
+/* ========================= End Responsive Sytling ========================= */
+@media screen and (max-width: 1700px) {
+    .trusted_bg_image{
+        background-size: cover;
+    }
+}
+@media screen and (max-width: 1700px) {
+    .trusted_bg_image{
+        background-position: 3% center;
+    }
+}
+@media screen and (max-width: 1280px) {
+    .trusted_bg_image{
+        background-position: 22% center;
+    }
+}
+@media screen and (max-width: 991px) {
+    .trusted_bg_image{
+        background-position: 30% center;
+    }
+}
+@media screen and (max-width: 450px) {
+    .trusted_bg_image{
+        background-position: 25% center;
+    }
+}
