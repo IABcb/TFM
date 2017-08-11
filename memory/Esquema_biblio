@@ -16,15 +16,17 @@ plataforma (portatil o cluster de amazon o donde), caracteristicas tecnicas
     - Python: https://www.python.org/ 2.7 y 3.5
     - linux 16.04
     - Shell Bash script: https://es.wikipedia.org/wiki/Bash
-    - Docker: https://www.docker.com/
-    - Kafka: https://kafka.apache.org/
+    - Docker: https://www.docker.com/ - Docker version 17.05.0-ce
+    - Kafka: https://kafka.apache.org/ENV SCALA_VERSION 2.11
+					ENV KAFKA_VERSION 0.10.1.0
+					-Zookeeper
     - Kibana: https://www.elastic.co/products/kibana
-    - ElasticSearch: https://www.elastic.co/
-    - Spark, Spark Streaming: https://spark.apache.org/, https://spark.apache.org/streaming/
+    - ElasticSearch: https://www.elastic.co/ apache license 2.0
+    - Spark, Spark Streaming: https://spark.apache.org/, https://spark.apache.org/streaming/ 2.0
     - Spark ML y MLlib (RandomForest)https://spark.apache.org/mllib/, https://spark.apache.org/docs/latest/ml-guide.html, https://es.wikipedia.org/wiki/Random_forest
     - Jupyter: http://jupyter.org/
     - TCPDUMP: http://www.tcpdump.org/tcpdump_man.html
-    - anaconda: https://docs.continuum.io/anaconda/
+    - anaconda: https://docs.continuum.io/anaconda/ ver 3
 
 4. Case studies
 
