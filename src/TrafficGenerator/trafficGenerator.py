@@ -78,11 +78,30 @@ if __name__ == "__main__":
     myIP = ni.ifaddresses(iface)[2][0]['addr']
     user = traffic_generator(myIP = myIP, iface= iface)
 
-    time_running = 20
+    traffic_types = ['voip', 'browsing', 'video']
+    error_message = 'Usage: python trafficGenerator.py <voip or browsing or video> <time running>'
+    if len(sys.argv) != 3:
+        print(error_message)
+    else:
+        traffic_type = sys.argv[1]
+        time_running = sys.argv[2]
+        try:
+            int(time_running)
+            if traffic_type not in traffic_types:
+                print(error_message)
+            print(traffic_type)
+            print(time_running)
+            user.activate(time_running, traffic_type)
+        except:
+            print(error_message)
 
-    traffic_type = 'voip'
-    user.activate(time_running, traffic_type)
-    traffic_type = 'browsing'
-    user.activate(time_running, traffic_type)
-    traffic_type = 'video'
-    user.activate(time_running, traffic_type)
+
+
+
+
+    # traffic_type = 'voip'
+    # user.activate(time_running, traffic_type)
+    # traffic_type = 'browsing'
+    # user.activate(time_running, traffic_type)
+    # traffic_type = 'video'
+    # user.activate(time_running, traffic_type)
