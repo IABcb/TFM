@@ -30,13 +30,14 @@ def proto2code(proto):
     protos = {'ICMP': 3, 'UDP': 2, 'tcp': 1}
     return protos[proto]
 
-def code2label(code):
-    '''Thins function converts a code into the service label. This code has been set according to the model'''
-    codes = {1: 'video', 2: 'voIP', 3:'browsing'}
-    return codes[code]
+# def code2label(code):
+#
+#     codes = {1: 'video', 2: 'voip', 3:'browsing'}
+#     return codes[code]
 
 def label2code(label):
-    labels = {'video': 1, 'voIP': 2 ,'browsing': 3}
+    '''Thins function converts a label into the code label. This code has been set according to the model'''
+    labels = {'video': 1, 'voip': 2 ,'browsing': 3}
     return labels[label]
 
 def compare_results(label, predicted_value):
@@ -44,7 +45,7 @@ def compare_results(label, predicted_value):
     1: predicted result is correct
     0: predicted value is incorrect'''
     result = 0
-    if label == code2label(int(predicted_value)):
+    if label2code(label) == int(predicted_value):
         result = 1
     return result
 
@@ -63,7 +64,6 @@ def predict_send2kafka(message, producer_kafka, model):
         predicted_value = model.predict([proto2code(proto), packet_length])
         # Save if the prediction was correct or was not (transforming predicted value according to the established code)
         record['model_predict'] = str(compare_results(label_service, predicted_value))
-        # print('Traffic:',  label_service,'code:',label2code(label_service))
         # Send the data
         producer_kafka.produce(json.dumps(str(record)))
 
