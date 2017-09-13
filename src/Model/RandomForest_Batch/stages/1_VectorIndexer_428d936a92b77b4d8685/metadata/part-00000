@@ -1,1 +1,0 @@
-{"class":"org.apache.spark.ml.feature.VectorIndexerModel","timestamp":1502468594431,"sparkVersion":"2.0.2","uid":"VectorIndexer_428d936a92b77b4d8685","paramMap":{"maxCategories":4,"inputCol":"features","outputCol":"indexedFeatures"}}

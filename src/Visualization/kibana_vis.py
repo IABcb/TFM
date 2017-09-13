@@ -39,6 +39,7 @@ def transform_message(message):
     transformed_message['IP_TotLen'] = int(convert_bytes(int(transformed_message['IP_TotLen']), 'k'))
     # Model prediction
     transformed_message['model_predict'] = int(transformed_message['model_predict'])
+    # print('model_predict: ', transformed_message['model_predict'])
     # Format time-stamp
     transformed_message['timeStamp'] = str_to_time(transformed_message['timeStamp'])[0:-3]
 

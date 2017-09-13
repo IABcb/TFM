@@ -32,8 +32,12 @@ def proto2code(proto):
 
 def code2label(code):
     '''Thins function converts a code into the service label. This code has been set according to the model'''
-    codes = {1: 'is_youtube', 2: 'voIP', 3:'browsing'}
+    codes = {1: 'video', 2: 'voIP', 3:'browsing'}
     return codes[code]
+
+def label2code(label):
+    labels = {'video': 1, 'voIP': 2 ,'browsing': 3}
+    return labels[label]
 
 def compare_results(label, predicted_value):
     '''This function will compare the real label of the service with the predicted one
@@ -59,6 +63,7 @@ def predict_send2kafka(message, producer_kafka, model):
         predicted_value = model.predict([proto2code(proto), packet_length])
         # Save if the prediction was correct or was not (transforming predicted value according to the established code)
         record['model_predict'] = str(compare_results(label_service, predicted_value))
+        # print('Traffic:',  label_service,'code:',label2code(label_service))
         # Send the data
         producer_kafka.produce(json.dumps(str(record)))
 
@@ -282,7 +287,8 @@ if __name__ == "__main__":
     ssc = StreamingContext(sc, reading_time_window)
 
     # Load model
-    RF_streaming_path = '../Model/RandomForest_Streaming'
+    # RF_streaming_path = '../Model/RandomForest_Streaming100'
+    RF_streaming_path = '../Model/RandomForest_Streaming10'
     model = RandomForestModel.load(sc, RF_streaming_path)
 
     # Spark Streaming Kafka
