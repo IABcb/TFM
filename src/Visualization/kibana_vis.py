@@ -92,6 +92,7 @@ if __name__ == "__main__":
 
     # Index
     message_id=1
+    print('Waiting for messages')
     for message in consumer:
 
         print('Received message with id: ' + str(message_id))

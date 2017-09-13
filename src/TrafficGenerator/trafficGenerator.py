@@ -84,14 +84,12 @@ if __name__ == "__main__":
         print(error_message)
     else:
         traffic_type = sys.argv[1]
-        time_running = sys.argv[2]
         try:
-            int(time_running)
+            time_running = int(sys.argv[2])
             if traffic_type not in traffic_types:
                 print(error_message)
-            print(traffic_type)
-            print(time_running)
-            user.activate(time_running, traffic_type)
+            else:
+                user.activate(time_running, traffic_type)
         except:
             print(error_message)
 
